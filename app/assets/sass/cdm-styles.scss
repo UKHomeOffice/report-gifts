@@ -1,0 +1,36 @@
+.js-hidden {
+  display: none;
+}
+
+.lookup-results {
+  max-width: 41ex;
+
+  ul {
+    overflow: hidden;
+
+    li {
+      padding: 10px;
+      background-color: #f8f8f8;
+
+
+      p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        strong {
+          font-weight: bold;
+          margin-right: 5px;
+        }
+      }
+
+      p:first-child {
+        font-size: larger;
+        font-weight: bold;
+      }
+
+      p:last-child {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

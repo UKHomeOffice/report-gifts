@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Gift description</h1>
+
+    <form class="form" action="gift-details" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="gift-type-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Type of gift {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
+          </legend>
+          <div id="gift-type-hint" class="govuk-hint">
+            Select all that apply.
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type" name="gift-type" type="checkbox" value="lunch" {{
+                checked( "gift-type" , "lunch" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type">
+                Lunch
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-2" name="gift-type" type="checkbox" value="dinner" {{
+                checked( "gift-type" , "dinner" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-2">
+                Dinner
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-3" name="gift-type" type="checkbox" value="travel" {{
+                checked( "gift-type" , "travel" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-3">
+                Travel
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-4" name="gift-type" type="checkbox" value="cash" {{
+                checked( "gift-type" , "cash" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-4">
+                Cash
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-5" name="gift-type" type="checkbox"
+                value="perishable" {{ checked( "gift-type" , "perishable" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-5">
+                Perishable gift
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-6" name="gift-type" type="checkbox"
+                value="imperishable" {{ checked( "gift-type" , "imperishable" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-6">
+                Imperishable gift
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="gift-description">
+          Description of gift
+        </label>
+        <div id="gift-description-hint" class="govuk-hint">
+          For example, "a bronze-plated medal".
+        </div>
+        <input class="govuk-input" id="gift-description" name="gift-description" value="{{ data['gift-description'] }}"
+          type="text" autocomplete="off">
+      </div>
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

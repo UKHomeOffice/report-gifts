@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/delegated-authority-approval-redirect" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {% if (data['received-or-offered'] == "received")%}
+              Do you have approval from a delegated authority (SCS 1 or above)?
+              {% else %}
+              Do you have approval from a delegated authority (SCS 2 or above)?
+              {% endif %}
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="delegated-authority-approval" name="delegated-authority-approval"
+                type="radio" value="yes" {{ checked( "delegated-authority-approval" , "yes" ) }}>
+              <label class="govuk-label govuk-radios__label" for="delegated-authority-approval">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="delegated-authority-approval-2" name="delegated-authority-approval"
+                type="radio" value="no" {{ checked( "delegated-authority-approval" , "no" ) }}>
+              <label class="govuk-label govuk-radios__label" for="delegated-authority-approval-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-inset-text">
+        <a href="https://ehdg.cx.ukg.oraclecloud.com/app/answers/detail/a_id/5012" class="govuk-link"
+          rel="noreferrer noopener" target="_blank">More information about financial limits and required approvals is
+          available (opens in a new window or tab).</a>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

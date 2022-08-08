@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Gift details</h1>
+
+    <form class="form" action="/gift-details-redirect" method="post">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
+        data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#date-received-or-offered">Enter a date date in the past</a>
+            </li>
+            <li>
+              <a href="#reason-for-gift">Enter a reason for this gift</a>
+            </li>
+            <li>
+              <a href="#cost-of-gift">Enter the total cost of the gift in pounds</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <label class="govuk-label govuk-label--m" for="date-received-or-offered">
+          Date {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
+        </label>
+        <p id="date-received-or-offered-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter a date in the past
+        </p>
+        <input class="govuk-input govuk-input--width-10" id="date-received-or-offered" name="date-received-or-offered"
+          value="{{ data['date-received-or-offered'] }}" type="date">
+      </div>
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <label class="govuk-label govuk-label--m" for="reason-for-gift">
+          Reason for the gift
+        </label>
+        <div id="reason-for-gift-hint" class="govuk-hint">
+          For example, a diplomatic gesture.
+        </div>
+        <p id="reason-for-gift-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter a reason for this gift
+        </p>
+        <input class="govuk-input" id="reason-for-gift" name="reason-for-gift" value="{{ data['reason-for-gift'] }}"
+          type="text" autocomplete="off">
+      </div>
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <label class="govuk-label govuk-label--m" for="cost-of-gift">
+          Total cost, in pounds
+        </label>
+        <p id="cost-of-gift-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter the cost of the gift in pounds
+        </p>
+        <div class="govuk-input__wrapper">
+          <div class="govuk-input__prefix" aria-hidden="true">£</div>
+          <input class="govuk-input govuk-input--width-5" id="cost-of-gift" name="cost-of-gift"
+            value="{{ data['cost-of-gift'] }}" type="text"
+            pattern="(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$" inputmode="numeric" spellcheck="false"
+            autocomplete="off">
+        </div>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I do not know how much it cost
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p>The cost can be determined by checking the current retail value online, if it is not evident.</p>
+
+          <p>A composite gift (made up of more than one item) should be valued as a whole rather than the sum of the
+            individual cost of items included.</p>
+
+          <p>As a example, consider a hamper. The total cost will be the value of the hamper, not the value of the
+            individual items that make up the hamper.</p>
+        </div>
+      </details>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

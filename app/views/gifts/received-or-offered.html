@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/received-or-offered-redirect" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="received-or-offered-error">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What would you like to report?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="received-or-offered" name="received-or-offered" type="radio"
+                value="received" {{ checked( "received-or-offered" , "received" ) }}>
+              <label class="govuk-label govuk-radios__label" for="received-or-offered">
+                Gift received on the Home Office's behalf
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="received-or-offered-2" name="received-or-offered" type="radio"
+                value="offered" {{ checked( "received-or-offered" , "offered" ) }}>
+              <label class="govuk-label govuk-radios__label" for="received-or-offered-2">
+                Gift offered on behalf of the Home Office
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

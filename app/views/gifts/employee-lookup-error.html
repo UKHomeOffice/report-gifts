@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/employee-lookup-redirect" method="post">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
+        data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#employee-lookup">Enter an employee name, number or email and click "Search"</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="govuk-form-group govuk-form-group--error">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
+            Home Office employee lookup
+          </label>
+        </h1>
+        <div id="employee-lookup-hint" class="govuk-hint">
+          Search for an employee using their name, employee number or email.
+        </div>
+        <p id="employee-lookup-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter an employee name, number or email and click "Search"
+        </p>
+        <input class="govuk-input govuk-input--width-20" id="employee-lookup" name="employee-lookup" type="search"
+          autocomplete="off" value="{{ data['employee-lookup'] }}">
+        <button id="employee-lookup-search-button" class="button-secondary" type="button">
+          Search</button>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

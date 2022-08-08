@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ "Donor" if (data['received-or-offered'] == "received") else "Recipient"}} details
+    </h1>
+
+    <form class="form" action="gift-description" method="post">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="other-party-name">
+          Name
+        </label>
+        <div id="other-party-name-hint" class="govuk-hint">
+          This could be a company or an organisation.
+        </div>
+        <input class="govuk-input govuk-input--width-20" id="other-party-name" name="other-party-name" type="text"
+          value="{{ data['other-party-name'] }}" aria-describedby="other-party-name-hint">
+      </div>
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="other-party-details">
+          Contact details
+        </label>
+        <div id="other-party-details-hint" class="govuk-hint">
+          Include a telephone number and an email address. If the {{ "donor" if (data['received-or-offered'] ==
+          "received") else "recipient"}} is a company or an organisation, include a
+          representative's name.
+        </div>
+        <textarea class="govuk-textarea" id="other-party-details" name="other-party-details" rows="5"
+          aria-describedby="other-party-details-hint">{{ data['other-party-details'] }}</textarea>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
+      details</h1>
+
+    <form class="form" action="/someone-else-details-redirect" method="post">
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="someone-else-name">
+          Name
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="someone-else-name" name="someone-else-name" type="text"
+          value="{{ data['someone-else-name'] }}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="someone-else-email">
+          Email address
+        </label>
+        <div id="someone-else-email-hint" class="govuk-hint">
+          We'll use this to contact the {{ "recipient" if (data['received-or-offered'] == "received")
+          else "donor"}} for further information.
+        </div>
+        <input class="govuk-input govuk-input govuk-input--width-20" id="someone-else-email" name="someone-else-email"
+          type="email" value="{{ data['someone-else-email'] }}">
+      </div>
+
+      <div class=" govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="someone-else">
+          Grade
+        </label>
+        <select class="govuk-select" id="someone-else-grade" name="someone-else-grade">
+          <option disabled="true" selected>Select grade</option>
+          <option value="aa-and-equiv">AA and equivalents</option>
+          <option value="ao-and-equiv">AO and equivalents</option>
+          <option value="eo-and-equiv">EO and equivalents</option>
+          <option value="heo-and-equiv">HEO and equivalents</option>
+          <option value="seo-and-equiv">SEO and equivalents</option>
+          <option value="grade-6-and-equiv">Grade 6 and equivalents</option>
+          <option value="grade-7-and-equiv">Grade 7 and equivalents</option>
+          <option value="scs1">SCS 1</option>
+          <option value="scs2">SCS 2</option>
+          <option value="scs3">SCS 3</option>
+        </select>
+      </div>
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="someone-else-department-lookup">
+            Department lookup
+          </label>
+        </h1>
+        <div id="someone-else-department-lookup-hint" class="govuk-hint">
+          Search for a department by name or cost center number.
+        </div>
+        <input class="govuk-input govuk-input--width-20" id="someone-else-department-lookup"
+          name="someone-else-department-lookup" value="{{ data['someone-else-department-lookup'] }}" type="search"
+          autocomplete="off">
+        <button id="someone-else-department-lookup-search-button" class="button-secondary" type="button">
+          Search</button>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="someone-else-contact-number">
+          Contact number (optional)
+        </label>
+        <div class="govuk-input__wrapper">
+          <input class="govuk-input govuk-input--width-10" id="someone-else-contact-number"
+            name="someone-else-contact-number" type="tel" spellcheck="false" autocomplete="tel"
+            value="{{ data['someone-else-contact-number'] }}">
+        </div>
+      </div>
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
