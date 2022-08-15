@@ -91,22 +91,18 @@ router.post("/gift-decision-redirect", (req, res) => {
 router.post("/approved-supplier-redirect", (req, res) => {
   let approvedSupplierUsed = req.session.data["approved-supplier-used"]
   let individualGift = req.session.data["individual-gift"]
+  let approverSupplierNotUsedReason = req.session.data["approved-supplier-not-used-reason"]
 
   if (approvedSupplierUsed == "yes" && individualGift == "no") {
     res.redirect("gifts/delegated-authority-approval")
   } else if (approvedSupplierUsed == "yes" && individualGift == "yes") {
     res.redirect("gifts/summary")
-  } else if (approvedSupplierUsed == "no") {
-    res.redirect("gifts/non-approved-supplier-used-reason")
-  }
-})
-
-router.post("/non-approved-supplier-used-reason-redirect", (req, res) => {
-  let individualGift = req.session.data["individual-gift"]
-  if (individualGift == "yes") {
-    res.redirect("gifts/summary")
-  } else {
+  } else if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
+    res.redirect("gifts/approved-supplier-reason-error")
+  } else if (approvedSupplierUsed == "no" && individualGift == "no" && approverSupplierNotUsedReason != "") {
     res.redirect("gifts/delegated-authority-approval")
+  } else if (approvedSupplierUsed == "no" && individualGift == "yes" && approverSupplierNotUsedReason != "") {
+    res.redirect("gifts/summary")
   }
 })
 

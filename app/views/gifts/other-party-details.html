@@ -26,21 +26,20 @@
           This could be a company or an organisation.
         </div>
         <input class="govuk-input govuk-input--width-20" id="other-party-name" name="other-party-name" type="text"
-          value="{{ data['other-party-name'] }}" aria-describedby="other-party-name-hint">
+          value="{{ data['other-party-name'] }}" aria-describedby="other-party-name-hint" autocomplete="off">
       </div>
 
 
       <div class="govuk-form-group">
-        <label class="govuk-label govuk-label--m" for="other-party-details">
+        <label class="govuk-label govuk-label--m" for="other-party-contact-details">
           Contact details
         </label>
-        <div id="other-party-details-hint" class="govuk-hint">
+        <div id="other-party-contact-details-hint" class="govuk-hint">
           Include a telephone number and an email address. If the {{ "donor" if (data['received-or-offered'] ==
-          "received") else "recipient"}} is a company or an organisation, include a
-          representative's name.
+          "received") else "recipient"}} is a company or an organisation, include a representative's name.
         </div>
-        <textarea class="govuk-textarea" id="other-party-details" name="other-party-details" rows="5"
-          aria-describedby="other-party-details-hint">{{ data['other-party-details'] }}</textarea>
+        <textarea class="govuk-textarea" id="other-party-contact-details" name="other-party-contact-details" rows="5"
+          aria-describedby="other-party-contact-details-hint">{{ data['other-party-contact-details'] }}</textarea>
       </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>

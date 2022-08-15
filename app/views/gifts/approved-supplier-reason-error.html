@@ -16,6 +16,20 @@
 
     <form class="form" action="/approved-supplier-redirect" method="post">
 
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
+        data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#approved-supplier-not-used-reason">Enter a reason why an approved supplier was not used</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -43,11 +57,14 @@
               </label>
             </div>
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
-              <div class="govuk-form-group">
+              <div class="govuk-form-group govuk-form-group--error">
                 <label class="govuk-label" for="contact-by-phone">
                   Reason why an approved supplier was not used
                 </label>
-                <textarea class="govuk-textarea" id="approved-supplier-not-used-reason"
+                <p id="contact-by-email-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>Enter a reason why an approved supplier was not used
+                </p>
+                <textarea class="govuk-textarea govuk-textarea--error" id="approved-supplier-not-used-reason"
                   name="approved-supplier-not-used-reason"
                   rows="3">{{ data['approved-supplier-not-used-reason'] }}</textarea>
               </div>

@@ -22,7 +22,7 @@
           Date {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
         </label>
         <input class="govuk-input govuk-input--width-10" id="date-received-or-offered" name="date-received-or-offered"
-          value="{{ data['date-received-or-offered'] }}" type="date">
+          value="{{ data['date-received-or-offered'] }}" type="date" autocomplete="off">
       </div>
 
       <div class="govuk-form-group">
@@ -43,9 +43,7 @@
         <div class="govuk-input__wrapper">
           <div class="govuk-input__prefix" aria-hidden="true">£</div>
           <input class="govuk-input govuk-input--width-5" id="cost-of-gift" name="cost-of-gift"
-            value="{{ data['cost-of-gift'] }}" type="text"
-            pattern="(?=.*?\d)^\$?(([1-9]\d{0,2}(,\d{3})*)|\d+)?(\.\d{1,2})?$" inputmode="numeric" spellcheck="false"
-            autocomplete="off">
+            value="{{ data['cost-of-gift'] }}" type="text" spellcheck="false" autocomplete="off">
         </div>
       </div>
 

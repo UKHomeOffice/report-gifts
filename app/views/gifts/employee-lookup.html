@@ -15,7 +15,7 @@
 
     <form class="form" action="/employee-lookup-redirect" method="post">
 
-      <div class="govuk-form-group">
+      <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
             Home Office employee lookup
           </label>
@@ -27,6 +27,19 @@
           autocomplete="off" value="{{ data['employee-lookup'] }}">
         <button id="employee-lookup-search-button" class="button-secondary" type="button">
           Search</button>
+
+        <div id="employee-lookup-results" class="lookup-results js-hidden">
+          <ul class="lookup-results">
+            <li>
+              <p>Daniel Blair</p>
+              <p>daniel.blair@homeoffice.gov.uk</p>
+              <p><strong>Grade</strong>SEO</p>
+              <p><strong>Position</strong>Service Cloud Specialist</p>
+              <p><strong>Department/Cost Centre</strong>BXL - 132777</p>
+              <p><strong>Business Area</strong>Software</p>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>

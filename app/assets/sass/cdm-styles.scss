@@ -2,16 +2,29 @@
   display: none;
 }
 
+.lookup {
+  position: relative;
+}
+
 .lookup-results {
   max-width: 41ex;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  width: 99%;
 
   ul {
     overflow: hidden;
+    border: 2px solid #0b0c0c;
 
     li {
       padding: 10px;
-      background-color: #f8f8f8;
 
+      &:hover {
+        background-color: #bfc1c3;
+      }
 
       p {
         margin-top: 0px;
@@ -33,4 +46,9 @@
       }
     }
   }
+}
+
+.hods-panel--confirmation {
+  color: #ffffff;
+  background-color: #6f0a79;
 }

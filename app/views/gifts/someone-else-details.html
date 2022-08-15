@@ -23,7 +23,7 @@
           Name
         </label>
         <input class="govuk-input govuk-input--width-20" id="someone-else-name" name="someone-else-name" type="text"
-          value="{{ data['someone-else-name'] }}">
+          value="{{ data['someone-else-name'] }}" autocomplete="off">
       </div>
 
       <div class="govuk-form-group">
@@ -35,7 +35,7 @@
           else "donor"}} for further information.
         </div>
         <input class="govuk-input govuk-input govuk-input--width-20" id="someone-else-email" name="someone-else-email"
-          type="email" value="{{ data['someone-else-email'] }}">
+          type="email" value="{{ data['someone-else-email'] }}" autocomplete="off">
       </div>
 
       <div class=" govuk-form-group">
@@ -57,7 +57,7 @@
         </select>
       </div>
 
-      <div class="govuk-form-group">
+      <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="someone-else-department-lookup">
             Department lookup
           </label>
@@ -70,6 +70,16 @@
           autocomplete="off">
         <button id="someone-else-department-lookup-search-button" class="button-secondary" type="button">
           Search</button>
+
+        <div id="department-lookup-results" class="lookup-results js-hidden">
+          <ul class="lookup-results">
+            <li>
+              <p>BXL - 132777</p>
+              <p><strong>Status</strong>Active</p>
+              <p><strong>Business Area</strong>Software</p>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="govuk-form-group">
@@ -78,7 +88,7 @@
         </label>
         <div class="govuk-input__wrapper">
           <input class="govuk-input govuk-input--width-10" id="someone-else-contact-number"
-            name="someone-else-contact-number" type="tel" spellcheck="false" autocomplete="tel"
+            name="someone-else-contact-number" type="tel" spellcheck="false" autocomplete="off"
             value="{{ data['someone-else-contact-number'] }}">
         </div>
       </div>

@@ -13,9 +13,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="summary" method="post">
+    <form id="approver-lookup-form" class="form" action="summary" method="post">
 
-      <div class="govuk-form-group">
+      <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="approver-lookup">
             Approver Lookup
           </label>
@@ -27,19 +27,21 @@
           value="{{ data['approver-lookup'] }}" type="search" autocomplete="off">
         <button id="approver-lookup-search-button" class="button-secondary" type="button">
           Search</button>
-      </div>
 
-      <div class="lookup-results">
-        <ul class="lookup-results">
-          <li>
-            <p>Cahil De Menezes</p>
-            <p>cahil.de_menezes@homeoffice.gov.uk</p>
-            <p><strong>Grade</strong>SCS1</p>
-            <p><strong>Position</strong>Interaction Designer</p>
-            <p><strong>Department/Cost Centre</strong>UX - 249300</p>
-            <p><strong>Business Area</strong>Customer Services</p>
-          </li>
-        </ul>
+
+        <div id="approver-lookup-results" class="lookup-results js-hidden">
+          <ul class="lookup-results">
+            <li>
+              <p>Cahil De Menezes</p>
+              <p>cahil.de_menezes@homeoffice.gov.uk</p>
+              <p><strong>Grade</strong>SCS 2</p>
+              <p><strong>Position</strong>Interaction Designer</p>
+              <p><strong>Department/Cost Centre</strong>UX - 249300</p>
+              <p><strong>Business Area</strong>Customer Services</p>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>

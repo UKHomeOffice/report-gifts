@@ -53,8 +53,8 @@
           <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['received-or-offered']
           == "received") else "donor's"}} name
         </p>
-        <input class="govuk-input govuk-input--width-20" id="someone-else-name" name="someone-else-name" type="text"
-          value="{{ data['someone-else-name'] }}">
+        <input class="govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-name"
+          name="someone-else-name" type="text" value="{{ data['someone-else-name'] }}">
       </div>
 
       <div class="govuk-form-group govuk-form-group--error">
@@ -69,8 +69,8 @@
           <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['received-or-offered']
           == "received") else "donor's"}} email
         </p>
-        <input class="govuk-input govuk-input govuk-input--width-20" id="someone-else-email" name="someone-else-email"
-          type="email" value="{{ data['someone-else-email'] }}">
+        <input class="govuk-input govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-email"
+          name="someone-else-email" type="email" value="{{ data['someone-else-email'] }}">
       </div>
 
       <div class=" govuk-form-group govuk-form-group--error">
@@ -81,7 +81,7 @@
           <span class="govuk-visually-hidden">Error:</span>Select the {{ "recipient's" if (data['received-or-offered']
           == "received") else "donor's"}} grade
         </p>
-        <select class="govuk-select" id="someone-else-grade" name="someone-else-grade">
+        <select class="govuk-select govuk-select--error" id="someone-else-grade" name="someone-else-grade">
           <option disabled="true" selected>Select grade</option>
           <option value="aa-and-equiv">AA and equivalents</option>
           <option value="ao-and-equiv">AO and equivalents</option>
@@ -96,7 +96,7 @@
         </select>
       </div>
 
-      <div class="govuk-form-group govuk-form-group--error">
+      <div class="govuk-form-group govuk-form-group--error lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="someone-else-department-lookup">
             Department lookup
           </label>
@@ -108,11 +108,21 @@
           <span class="govuk-visually-hidden">Error:</span> Enter a department name or cost centre number and click
           "Search"
         </p>
-        <input class="govuk-input govuk-input--width-20" id="someone-else-department-lookup"
+        <input class="govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-department-lookup"
           name="someone-else-department-lookup" value="{{ data['someone-else-department-lookup'] }}" type="search"
           autocomplete="off">
         <button id="someone-else-department-lookup-search-button" class="button-secondary" type="button">
           Search</button>
+
+        <div id="department-lookup-results" class="lookup-results js-hidden">
+          <ul class="lookup-results">
+            <li>
+              <p>BXL - 132777</p>
+              <p><strong>Status</strong>Active</p>
+              <p><strong>Business Area</strong>Software</p>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="govuk-form-group">
@@ -121,7 +131,7 @@
         </label>
         <div class="govuk-input__wrapper">
           <input class="govuk-input govuk-input--width-10" id="someone-else-contact-number"
-            name="someone-else-contact-number" type="tel" spellcheck="false" autocomplete="tel"
+            name="someone-else-contact-number" type="tel" spellcheck="false" autocomplete="off"
             value="{{ data['someone-else-contact-number'] }}">
         </div>
       </div>
