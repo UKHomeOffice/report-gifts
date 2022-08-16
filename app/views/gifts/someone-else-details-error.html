@@ -18,18 +18,39 @@
 
     <form class="form" action="/someone-else-details-redirect" method="post">
 
-      <div class="govuk-form-group">
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
+        data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#someone-else-name">Enter a team, unit or department name</a>
+            </li>
+            <li>
+              <a href="#home-office-representative-lookup">Enter a Home Office representative's name, employee number
+                or email and click "Search"</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="someone-else-name">
           Name
         </label>
         <div id="someone-else-name-hint" class="govuk-hint">
           Could be a team, unit or department.
         </div>
-        <input class="govuk-input govuk-input--width-20" id="someone-else-name" name="someone-else-name" type="text"
-          autocomplete="off" value="{{ data['someone-else-name'] }}">
+        <p id="someone-else-name-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span>Enter a team, unit or department name.
+        </p>
+        <input class="govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-name"
+          name="someone-else-name" type="text" value="{{ data['someone-else-name'] }}" autocomplete="off">
       </div>
 
-      <div class="govuk-form-group lookup">
+      <div class="govuk-form-group govuk-form-group--error lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m"
             for="home-office-representative-lookup">
             Home Office representative lookup
@@ -38,7 +59,11 @@
         <div id="home-office-representative-lookup-hint" class="govuk-hint">
           Search for a Home Office representative using their name, employee number or email.
         </div>
-        <input class="govuk-input govuk-input--width-20" id="home-office-representative-lookup"
+        <p id="someone-else-department-lookup-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span>Enter a Home Office representative's name, employee number
+          or email and click "Search"
+        </p>
+        <input class="govuk-input govuk-input--width-20 govuk-input--error" id="home-office-representative-lookup"
           name="home-office-representative-lookup" value="{{ data['home-office-representative-lookup'] }}" type="search"
           autocomplete="off">
         <button id="home-office-representative-lookup-search-button" class="button-secondary" type="button">

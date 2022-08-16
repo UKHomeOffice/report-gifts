@@ -25,13 +25,14 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#date-received-or-offered">Enter a date date in the past</a>
+              <a href="#date-received-or-offered">Select today's date or a date in the past</a>
             </li>
             <li>
-              <a href="#reason-for-gift">Enter a reason for this gift</a>
+              <a href="#reason-for-gift">Enter a reason for {{ "receiving" if
+                (data['received-or-offered'] == "received") else "donating" }} this gift</a>
             </li>
             <li>
-              <a href="#cost-of-gift">Enter the total cost of the gift in pounds</a>
+              <a href="#cost-of-gift">Enter the total cost of the gift, in pounds</a>
             </li>
           </ul>
         </div>
@@ -42,7 +43,7 @@
           Date {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
         </label>
         <p id="date-received-or-offered-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter a date in the past
+          <span class="govuk-visually-hidden">Error:</span> Select today's date or a date in the past
         </p>
         <input class="govuk-input govuk-input--width-10 govuk-input--error" id="date-received-or-offered"
           name="date-received-or-offered" value="{{ data['date-received-or-offered'] }}" type="date">
@@ -50,13 +51,14 @@
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for the gift
+          Reason for {{ "receiving" if (data['received-or-offered'] == "received") else "donating" }} the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.
         </div>
         <p id="reason-for-gift-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter a reason for this gift
+          <span class="govuk-visually-hidden">Error:</span> Enter a reason for {{ "receiving" if
+          (data['received-or-offered'] == "received") else "donating" }} this gift
         </p>
         <input class="govuk-input govuk-input--error" id="reason-for-gift" name="reason-for-gift"
           value="{{ data['reason-for-gift'] }}" type="text" autocomplete="off">
@@ -67,7 +69,7 @@
           Total cost, in pounds
         </label>
         <p id="cost-of-gift-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter the cost of the gift in pounds
+          <span class="govuk-visually-hidden">Error:</span> Enter the total cost of the gift, in pounds
         </p>
         <div class="govuk-input__wrapper">
           <div class="govuk-input__prefix" aria-hidden="true">£</div>

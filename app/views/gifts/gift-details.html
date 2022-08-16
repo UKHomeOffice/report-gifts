@@ -27,7 +27,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for the gift
+          Reason for {{ "receiving" if (data['received-or-offered'] == "received") else "donating" }} the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.

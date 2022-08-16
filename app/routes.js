@@ -47,14 +47,10 @@ router.post("/employee-lookup-redirect", (req, res) => {
 router.post("/someone-else-details-redirect", (req, res) => {
 
   let name = req.session.data["someone-else-name"]
-  let email = req.session.data["someone-else-email"]
-  let grade = req.session.data["someone-else-grade"]
-  let departmentLookup = req.session.data["someone-else-department-lookup"]
+  let homeOfficeRepresentativeLookup = req.session.data["home-office-representative-lookup"]
 
-  if (name == "" && email == "" && grade == undefined && departmentLookup == "") {
-    res.redirect("gifts/someone-else-details-error-all")
-  } else if (name != "" && email != "" && grade == undefined && departmentLookup == "") {
-    res.redirect("gifts/someone-else-details-error-grade-and-department")
+  if (name == "" && homeOfficeRepresentativeLookup == "") {
+    res.redirect("gifts/someone-else-details-error")
   } else {
     res.redirect("gifts/other-party-details")
   }
@@ -62,7 +58,6 @@ router.post("/someone-else-details-redirect", (req, res) => {
 
 router.post("/gift-details-redirect", (req, res) => {
   let giftActionReported = req.session.data["received-or-offered"]
-
   let giftDate = new Date(req.session.data["date-received-or-offered"])
   let today = new Date()
   let giftDateInThePast = giftDate <= today

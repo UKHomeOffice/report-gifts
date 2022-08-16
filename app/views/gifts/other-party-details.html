@@ -16,6 +16,14 @@
     <h1 class="govuk-heading-l">{{ "Donor" if (data['received-or-offered'] == "received") else "Recipient"}} details
     </h1>
 
+    {% if (data['received-or-offered'] == "received") %}
+    <p class="govuk-body">The donor is the person or organisation who gave the gift. They could be from
+      inside or outside the Home Office.</p>
+    {% else %}
+    <p class="govuk-body">The recipient is the person or organisation who was given the gift. They could be
+      from inside or outside the Home Office.</p>
+    {% endif %}
+
     <form class="form" action="gift-description" method="post">
 
       <div class="govuk-form-group">
@@ -23,10 +31,10 @@
           Name
         </label>
         <div id="other-party-name-hint" class="govuk-hint">
-          This could be a company or an organisation.
+          Person's or organisation's name.
         </div>
         <input class="govuk-input govuk-input--width-20" id="other-party-name" name="other-party-name" type="text"
-          value="{{ data['other-party-name'] }}" aria-describedby="other-party-name-hint" autocomplete="off">
+          autocomplete="off" value="{{ data['other-party-name'] }}" aria-describedby="other-party-name-hint">
       </div>
 
 
@@ -35,8 +43,7 @@
           Contact details
         </label>
         <div id="other-party-contact-details-hint" class="govuk-hint">
-          Include a telephone number and an email address. If the {{ "donor" if (data['received-or-offered'] ==
-          "received") else "recipient"}} is a company or an organisation, include a representative's name.
+          Include a telephone number and an email address. For an organisation, include a representative's name.
         </div>
         <textarea class="govuk-textarea" id="other-party-contact-details" name="other-party-contact-details" rows="5"
           aria-describedby="other-party-contact-details-hint">{{ data['other-party-contact-details'] }}</textarea>
