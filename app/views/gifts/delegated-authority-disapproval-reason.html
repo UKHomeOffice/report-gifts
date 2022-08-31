@@ -16,23 +16,18 @@
     <form class="form" action="summary" method="post">
 
       <div class="govuk-form-group">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="reason-for-disapproval">
-            Why was this gift not approved by the delegated authority?
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="reason-for-disapproval">
+            Why did you not get approved from a delegated authority?
           </label>
         </h1>
         <div id="more-detail-hint" class="govuk-hint">
-          State the reasons why this gift did not get approval from a Head of Unit or Senior Civil Servant (SCS).
+          State the reasons why this gift did not get approval from a Head of Unit or Senior Civil Servant (SCS), as per
+          the
+          policy.
         </div>
         <textarea class="govuk-textarea" id="reason-for-disapproval" name="reason-for-disapproval"
           rows="3">{{ data['reason-for-disapproval'] }} </textarea>
-      </div>
-
-      <div class="govuk-inset-text">
-        <p>Heads of Unit and Senior Civil Servants have the responsibility and delegated authority to decide if it is
-          appropriate to accept and/or offer gifts.</p>
-
-        <p>This responsibility cannot be delegated onwards in the management chain beyond the Head of Unit or SCS.
-        </p>
       </div>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>

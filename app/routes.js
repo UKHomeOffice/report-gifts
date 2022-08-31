@@ -1,4 +1,3 @@
-const e = require('express')
 const express = require('express')
 const router = express.Router()
 
@@ -58,17 +57,17 @@ router.post("/someone-else-details-redirect", (req, res) => {
 
 router.post("/gift-details-redirect", (req, res) => {
   let giftActionReported = req.session.data["received-or-offered"]
-  let giftDate = new Date(req.session.data["date-received-or-offered"])
-  let today = new Date()
-  let giftDateInThePast = giftDate <= today
+  let giftDate = req.session.data["date-received-or-offered"]
+  let giftReason = req.session.data['reason-for-gift']
+  let giftCost = req.session.data['cost-of-gift']
 
-  if (!giftDateInThePast) {
-    res.redirect("gifts/gift-details-error-date")
+  if (giftDate == "" && giftReason == "" && giftCost == "") {
+    res.redirect("gifts/gift-details-error")
   }
 
-  if (giftDateInThePast && giftActionReported == "received") {
+  if (giftActionReported == "received") {
     res.redirect("gifts/gift-decision")
-  } else if (giftDateInThePast && giftActionReported == "offered") {
+  } else {
     res.redirect("gifts/approved-supplier")
   }
 })

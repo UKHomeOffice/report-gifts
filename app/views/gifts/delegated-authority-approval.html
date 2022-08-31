@@ -19,13 +19,14 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              {% if (data['received-or-offered'] == "received")%}
-              Do you have approval from a delegated authority (SCS 1 or above)?
-              {% else %}
-              Do you have approval from a delegated authority (SCS 2 or above)?
-              {% endif %}
+              Do you have approval from a delegated authority, as per the policy?
             </h1>
           </legend>
+          <div id="delegated-authority-approval-hint" class="govuk-hint">
+            <a href="https://ehdg.cx.ukg.oraclecloud.com/app/answers/detail/a_id/5012" class="govuk-link"
+              rel="noreferrer noopener" target="_blank">You can find the policy on Guidance and Requests (opens in a new
+              tab).</a>
+          </div>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="delegated-authority-approval" name="delegated-authority-approval"
@@ -44,12 +45,6 @@
           </div>
 
         </fieldset>
-      </div>
-
-      <div class="govuk-inset-text">
-        <a href="https://ehdg.cx.ukg.oraclecloud.com/app/answers/detail/a_id/5012" class="govuk-link"
-          rel="noreferrer noopener" target="_blank">More information about financial limits and required approvals is
-          available (opens in a new window or tab).</a>
       </div>
 
       <div class="govuk-warning-text">
