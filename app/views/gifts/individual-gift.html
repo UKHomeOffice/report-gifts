@@ -19,7 +19,9 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Were you the {{ "recipient" if (data['received-or-offered'] == "received") else "donor"}} of the gift?
+              Are you completing this report on someone's behalf?
+              <!-- Are you filling this out on behalf of {{ "the recipient" if (data['received-or-offered'] == "received")
+              else "the donor"}} of the gift? -->
             </h1>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
