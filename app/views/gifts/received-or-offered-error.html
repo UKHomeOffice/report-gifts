@@ -37,6 +37,9 @@
               What would you like to report?
             </h1>
           </legend>
+          <div id="recieved-or-offered-hint" class="govuk-hint">
+            You must report gifts even if they were rejected.
+          </div>
           <p id="received-or-offered-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Select an option to report a gift received or a
             gift offered
@@ -46,14 +49,14 @@
               <input class="govuk-radios__input" id="received-or-offered" name="received-or-offered" type="radio"
                 value="received" {{ checked( "received-or-offered" , "received" ) }}>
               <label class="govuk-label govuk-radios__label" for="received-or-offered">
-                Gifts received
+                Gift received
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="received-or-offered-2" name="received-or-offered" type="radio"
                 value="offered" {{ checked( "received-or-offered" , "offered" ) }}>
               <label class="govuk-label govuk-radios__label" for="received-or-offered-2">
-                Gifts offered
+                Gift offered
               </label>
             </div>
           </div>

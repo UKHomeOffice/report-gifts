@@ -35,8 +35,8 @@ router.post("/on-behalf-of-redirect", (req, res) => {
 
 router.post("/employee-lookup-redirect", (req, res) => {
   let employeeLookup = req.session.data["employee-lookup"]
-  console.log(employeeLookup)
-  if (employeeLookup == "") {
+  let employeeName = req.session.data["employee-name"]
+  if (employeeLookup == "" && employeeName == "") {
     res.redirect("gifts/employee-lookup-error")
   } else {
     res.redirect("gifts/other-party-details")

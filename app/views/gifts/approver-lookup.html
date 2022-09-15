@@ -17,11 +17,11 @@
 
       <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="approver-lookup">
-            Approver Lookup
+            Approver details
           </label>
         </h1>
         <div id="approver-lookup-hint" class="govuk-hint">
-          Search for an approver using their name, employee number or email.
+          Search for their name, employee number or email.
         </div>
         <input class="govuk-input govuk-input--width-20" id="approver-lookup" name="approver-lookup"
           value="{{ data['approver-lookup'] }}" type="search" autocomplete="off">
@@ -33,11 +33,11 @@
           <ul class="lookup-results">
             <li>
               <p>Cahil De Menezes</p>
-              <p>cahil.de_menezes@homeoffice.gov.uk</p>
-              <p><strong>Grade</strong>SCS 2</p>
-              <p><strong>Position</strong>Interaction Designer</p>
-              <p><strong>Department/Cost Centre</strong>UX - 249300</p>
-              <p><strong>Business Area</strong>Customer Services</p>
+              <p><strong>Email:</strong>cahil.de_menezes@homeoffice.gov.uk</p>
+              <p><strong>Grade:</strong>SCS 2</p>
+              <p><strong>Position:</strong>Interaction Designer</p>
+              <p><strong>Department and cost centre:</strong>UX - 249300</p>
+              <p><strong>Business area:</strong>Customer Services</p>
             </li>
           </ul>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Email address
+              Email
             </dt>
             <dd class="govuk-summary-list__value">
               cahil.de_menezes@homeoffice.gov.uk
@@ -79,7 +79,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Department/Cost Centre
+              Department and cost centre
             </dt>
             <dd class="govuk-summary-list__value">
               UX - 249300
@@ -87,15 +87,42 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Business Area
+              Business area
             </dt>
             <dd class="govuk-summary-list__value">
               Customer Services
             </dd>
           </div>
-          <a id="approver-lookup-clear-selection" class="govuk-link" href="">Clear Selection</a>
+          <a id="approver-lookup-clear-selection" class="govuk-link" href="">Clear selection</a>
         </dl>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I cannot find the approver
+        </summary>
+        <div class="govuk-details__text">
+          <p>If you cannot find the details of the approver, manually enter them below.</p>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="width-20">
+              Name
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
+              autocomplete="off">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="employee-email">
+              Email
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
+              spellcheck="false" autocomplete="off">
+          </div>
+
+        </div>
+      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

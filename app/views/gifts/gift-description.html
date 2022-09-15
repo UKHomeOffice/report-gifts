@@ -13,14 +13,14 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Gift description</h1>
+    <h1 class="govuk-heading-l">Gift details</h1>
 
     <form class="form" action="gift-details" method="post">
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="gift-type-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Type of gift {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
+            Type of gift
           </legend>
           <div id="gift-type-hint" class="govuk-hint">
             Select all that apply.
@@ -75,7 +75,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="gift-description">
-          Description of gift
+          Description
         </label>
         <div id="gift-description-hint" class="govuk-hint">
           For example, a bronze-plated medal.

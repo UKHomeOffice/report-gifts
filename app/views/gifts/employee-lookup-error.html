@@ -31,11 +31,11 @@
 
       <div class="govuk-form-group govuk-form-group--error lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
-            Home Office employee lookup
+            Recipient details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
-          Search for an employee using their name, employee number or email.
+          Search for their name, employee number or email.
         </div>
         <p id="employee-lookup-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span> Enter an employee name, number or email and click "Search"
@@ -49,12 +49,11 @@
           <ul class="lookup-results">
             <li>
               <p>Daniel Blair</p>
-              <p>daniel.blair@homeoffice.gov.uk</p>
-              <p><strong>Grade</strong>SEO</p>
-              <p><strong>Position</strong></p>
-              <p><strong>Cost Centre Code</strong>132777</p>
-              <p><strong>Department/Cost Centre</strong>BXL - 132777</p>
-              <p><strong>Business Area</strong>Software</p>
+              <p><strong>Email:</strong>daniel.blair@homeoffice.gov.uk</p>
+              <p><strong>Grade:</strong>SEO</p>
+              <p><strong>Position:</strong>Service Cloud Specialist</p>
+              <p><strong>Department and cost centre:</strong>BXL - 132777</p>
+              <p><strong>Business area:</strong>Software</p>
             </li>
           </ul>
         </div>
@@ -72,7 +71,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Email address
+              Email
             </dt>
             <dd class="govuk-summary-list__value">
               daniel.blair@homeoffice.gov.uk
@@ -96,7 +95,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Department/Cost Centre
+              Department and cost centre
             </dt>
             <dd class="govuk-summary-list__value">
               BXL - 132777
@@ -104,15 +103,42 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Business Area
+              Business area
             </dt>
             <dd class="govuk-summary-list__value">
               Software
             </dd>
           </div>
-          <a id="employee-lookup-clear-selection" class="govuk-link" href="">Clear Selection</a>
+          <a id="employee-lookup-clear-selection" class="govuk-link" href="">Clear selection</a>
         </dl>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I cannot find the recipient
+        </summary>
+        <div class="govuk-details__text">
+          <p>If you cannot find the details of the recipient, manually enter them below.</p>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="width-20">
+              Name
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
+              autocomplete="off">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="employee-email">
+              Email
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
+              spellcheck="false" autocomplete="off">
+          </div>
+
+        </div>
+      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
