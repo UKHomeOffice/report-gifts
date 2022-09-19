@@ -17,7 +17,8 @@
 
       <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
-            Recipient details
+            {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
@@ -99,17 +100,19 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find the recipient
+            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "donor"}} when I search
         </summary>
         <div class="govuk-details__text">
-          <p>If you cannot find the details of the recipient, manually enter them below.</p>
+          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "donor's"}} details.</p>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="width-20">
+            <label class="govuk-label" for="employee-name">
               Name
             </label>
             <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
-              autocomplete="off">
+              spellcheck="false" autocomplete="off" value="{{ data['employee-name'] }}">
           </div>
 
           <div class="govuk-form-group">
@@ -117,15 +120,16 @@
               Email
             </label>
             <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
-              spellcheck="false" autocomplete="off">
+              spellcheck="false" autocomplete="off" value="{{ data['employee-email'] }}">
           </div>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="employee-email">
+            <label class="govuk-label" for="employee-cost-centre-code">
               Cost centre code
             </label>
             <input class="govuk-input govuk-input--width-5" id="employee-cost-centre-code"
-              name="employee-cost-centre-code" type="email" spellcheck="false" autocomplete="off">
+              name="employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
+              value="{{ data['employee-cost-centre-code'] }}">
           </div>
 
         </div>

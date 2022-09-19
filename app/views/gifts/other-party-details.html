@@ -13,10 +13,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ "Donor" if (data['received-or-offered'] == "received") else "Recipient"}} details
+    <h1 class="govuk-heading-l">{{ "Donor" if (data['reporting'] == "gift-received-and-accepted") or
+      (data['reporting'] == "gift-received-and-rejected") else "Recipient"}} details
     </h1>
 
-    {% if (data['received-or-offered'] == "received") %}
+    {% if (data['reporting'] == "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") %}
     <p class="govuk-body">The donor is the person or organisation who gave the gift. They could be inside or outside the
       Home Office.</p>
     {% else %}

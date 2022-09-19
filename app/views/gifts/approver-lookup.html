@@ -100,27 +100,26 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find the approver
+            I cannot find the approver when I search
         </summary>
         <div class="govuk-details__text">
-          <p>If you cannot find the details of the approver, manually enter them below.</p>
+          <p>Enter the approver's details.</p>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="width-20">
+            <label class="govuk-label" for="approver-name">
               Name
             </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
-              autocomplete="off">
+            <input class="govuk-input govuk-input--width-20" id="approver-name" name="approver-name" type="text"
+              spellcheck="false" autocomplete="off" value="{{ data['approver-name'] }}">
           </div>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="employee-email">
+            <label class="govuk-label" for="approver-email">
               Email
             </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
-              spellcheck="false" autocomplete="off">
+            <input class="govuk-input govuk-input--width-20" id="approver-email" name="approver-email" type="email"
+              spellcheck="false" autocomplete="off" value="{{ data['approver-email'] }}">
           </div>
-
         </div>
       </details>
 

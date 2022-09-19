@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/reporting-redirect" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What would you like to report?
+            </h1>
+          </legend>
+          <div id="reporting-hint" class="govuk-hint">
+            You must report gifts even if they were rejected.
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporting" name="reporting" type="radio"
+                value="gift-received-and-accepted" {{ checked( "reporting" , "gift-received-and-accepted" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporting">
+                Gift received that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} accepted
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporting-2" name="reporting" type="radio"
+                value="gift-received-and-rejected" {{ checked( "reporting" , "gift-received-and-rejected" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporting-2">
+                Gift received that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} rejected
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporting-3" name="reporting" type="radio" value="gift-offered" {{
+                checked( "reporting" , "gift-offered" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporting-3">
+                Gift that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} offered
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

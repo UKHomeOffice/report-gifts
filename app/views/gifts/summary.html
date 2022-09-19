@@ -25,31 +25,21 @@
             Reporting
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ "Gift received" if (data['received-or-offered'] == "received") else "Gift offered"}}
-          </dd>
-        </div>
-        {% if (data['received-or-offered'] == "received") %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Decision taken
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ "Accepted gift" if (data['gift-decision'] == "accept") else "Rejected gift"}}
-          </dd>
-        </div>
-        {% endif %}
+            {% if (data['reporting'] == "gift-received-and-accepted") %}
+            Gift received and accepted
+            {% endif %}
 
-        {% if (data['individual-gift'] == "yes") %}
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            Self-Approved by
-          </dt>
-          <dd class="govuk-summary-list__value">
-            Cahil De Menezes
+            {% if (data['reporting'] == "gift-received-and-rejected") %}
+            Gift received and rejected
+            {% endif %}
+
+            {% if (data['reporting'] == "gift-offered") %}
+            Gift offered
+            {% endif %}
           </dd>
         </div>
-        {% endif %}
-        {% if (data['individual-gift'] == "no") %}
+
+        {% if (data['on-someones-behalf'] == "yes") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Delegated authority approval obtained
@@ -59,7 +49,7 @@
           </dd>
         </div>
         {% endif %}
-        {% if (data['individual-gift'] == "no" and data['delegated-authority-approval'] == "no") %}
+        {% if (data['on-someones-behalf'] == "yes" and data['delegated-authority-approval'] == "no") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Reasons why delegated authority approval was not obtained
@@ -71,9 +61,10 @@
         {% endif %}
       </dl>
 
-      {% if (data['individual-gift'] == "yes") %}
-      <h2 class="govuk-heading-m">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
-        details
+      {% if (data['on-someones-behalf'] == "no") %}
+      <h2 class="govuk-heading-m">
+        {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+        (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
       </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -86,7 +77,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Email address
+            Email
           </dt>
           <dd class="govuk-summary-list__value">
             cahil.de_menezes@homeoffice.gov.uk
@@ -110,7 +101,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Department/Cost Centre
+            Department and cost centre
           </dt>
           <dd class="govuk-summary-list__value">
             UX - 249300
@@ -118,7 +109,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Business Area
+            Business area
           </dt>
           <dd class="govuk-summary-list__value">
             Customer Services
@@ -127,9 +118,10 @@
       </dl>
       {% endif %}
 
-      {% if (data['individual-gift'] == "no" and data['on-behalf-of'] == "employee") %}
-      <h2 class="govuk-heading-m">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
-        details
+      {% if (data['on-someones-behalf'] == "yes" and data['on-behalf-of'] == "employee") %}
+      <h2 class="govuk-heading-m">
+        {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+        (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
       </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -142,7 +134,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Email address
+            Email
           </dt>
           <dd class="govuk-summary-list__value">
             daniel.blair@homeoffice.gov.uk
@@ -166,7 +158,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Department/Cost Centre
+            Department and cost centre
           </dt>
           <dd class="govuk-summary-list__value">
             BXL - 132777
@@ -174,7 +166,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Business Area
+            Business area
           </dt>
           <dd class="govuk-summary-list__value">
             Software
@@ -183,9 +175,10 @@
       </dl>
       {% endif %}
 
-      {% if (data['individual-gift'] == "no" and data['on-behalf-of'] == "other") %}
-      <h2 class="govuk-heading-m">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
-        details
+      {% if (data['on-someones-behalf'] == "yes" and data['on-behalf-of'] == "other") %}
+      <h2 class="govuk-heading-m">
+        {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+        (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
       </h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -235,7 +228,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Department/Cost Centre
+            Department and cost centre
           </dt>
           <dd class="govuk-summary-list__value">
             BXL - 132777
@@ -243,7 +236,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Business Area
+            Business area
           </dt>
           <dd class="govuk-summary-list__value">
             Software
@@ -252,8 +245,8 @@
       </dl>
       {% endif %}
 
-      <h2 class="govuk-heading-m">{{ "Donor" if (data['received-or-offered'] == "received") else "Recipient"}}
-        details</h2>
+      <h2 class="govuk-heading-m">{{ "Donor" if (data['reporting'] == "gift-received-and-accepted") or
+        (data['reporting'] == "gift-received-and-rejected") else "Recipient"}} details</h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
@@ -301,38 +294,39 @@
             Date {{ "received" if (data['received-or-offered'] == "received") else "donated" }}
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if(data['date-received-or-offered'] == "2022-09-01") %}
-            01 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-17") %}
+            17 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-02") %}
-            02 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-18") %}
+            18 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-03") %}
-            03 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-19") %}
+            19 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-04") %}
-            04 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-20") %}
+            20 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-05") %}
-            05 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-21") %}
+            21 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-06") %}
-            06 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-22") %}
+            22 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-07") %}
-            07 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-23") %}
+            23 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-08") %}
-            08 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-24") %}
+            24 September 2022
             {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-09-09") %}
-            09 September 2022
+            {% if(data['date-received-or-offered'] == "2022-09-25") %}
+            25 September 2022
             {% endif %}
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Reason for {{ "receiving" if (data['received-or-offered'] == "received") else "donating" }}
+            Reason for {{ "receiving" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "donating"}} the gift
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['reason-for-gift'] }}
@@ -347,7 +341,7 @@
           </dd>
         </div>
 
-        {% if(data['received-or-offered'] == "offered") %}
+        {% if(data['reporting'] == "gift-offered") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Obtained from approved supplier
@@ -370,7 +364,7 @@
       </dl>
 
 
-      {% if (data['individual-gift'] == "no" and data['delegated-authority-approval'] == "yes") %}
+      {% if (data['on-someones-behalf'] == "yes" and data['delegated-authority-approval'] == "yes") %}
       <h2 class="govuk-heading-m">Approver details</h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">

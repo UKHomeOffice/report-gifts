@@ -23,22 +23,25 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#employee-lookup">Enter an employee name, number or email and click "Search"</a>
+              <a href="#employee-lookup">Enter {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
+                (data['reporting'] == "gift-received-and-rejected") else "donor"}} details</a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="govuk-form-group govuk-form-group--error lookup">
+      <div class="govuk-form-group lookup govuk-form-group--error">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
-            Recipient details
+            {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
           Search for their name, employee number or email.
         </div>
         <p id="employee-lookup-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter an employee name, number or email and click "Search"
+          <span class="govuk-visually-hidden">Error:</span>Enter {{ "recipient" if (data['reporting'] ==
+          "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor"}} details
         </p>
         <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-lookup" name="employee-lookup"
           type="search" autocomplete="off" value="{{ data['employee-lookup'] }}">
@@ -116,29 +119,56 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find the recipient
+            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "donor"}} when I search
         </summary>
         <div class="govuk-details__text">
-          <p>If you cannot find the details of the recipient, manually enter them below.</p>
-
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="width-20">
+          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received-and-accepted") or
+            (data['reporting'] == "gift-received-and-rejected") else "donor's"}} details.
+          </p>
+          <div class="govuk-form-group govuk-form-group--error">
+            <label class="govuk-label" for="employee-name">
               Name
             </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
-              autocomplete="off">
+            <p id="employee-name-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
+              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}} name
+            </p>
+            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-name" name="employee-name"
+              type="text" spellcheck="false" autocomplete="off" value="{{ data['employee-name'] }}">
           </div>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group govuk-form-group--error">
             <label class="govuk-label" for="employee-email">
               Email
             </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
-              spellcheck="false" autocomplete="off">
+            <p id="employee-email-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
+              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}}
+              email
+            </p>
+            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-email"
+              name="employee-email" type="email" spellcheck="false" autocomplete="off"
+              value="{{ data['employee-email'] }}">
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <label class="govuk-label" for="employee-cost-centre-code">
+              Cost centre code
+            </label>
+            <p id="employee-cost-centre-code-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
+              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}}
+              cost centre code
+            </p>
+            <input class="govuk-input govuk-input--width-5 govuk-input--error" id="employee-cost-centre-code"
+              name="employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
+              value="{{ data['employee-cost-centre-code'] }}">
           </div>
 
         </div>
       </details>
+
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

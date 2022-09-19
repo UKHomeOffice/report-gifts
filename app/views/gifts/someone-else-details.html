@@ -13,8 +13,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
-      details</h1>
+    <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+      (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details</h1>
 
     <form class="form" action="/someone-else-details-redirect" method="post">
 
@@ -111,6 +111,42 @@
           <a id="home-office-representative-lookup-clear-selection" class="govuk-link" href="">Clear selection</a>
         </dl>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I cannot find a Home Office representative when I search
+        </summary>
+        <div class="govuk-details__text">
+          <p>Enter the Home Office representative's details.</p>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ho-employee-name">
+              Name
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="ho-employee-name" name="ho-employee-name" type="text"
+              spellcheck="false" autocomplete="off" value="{{ data['ho-employee-name'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ho-employee-email">
+              Email
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="ho-employee-email" name="ho-employee-email"
+              type="email" spellcheck="false" autocomplete="off" value="{{ data['ho-employee-email'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="ho-employee-cost-centre-code">
+              Cost centre code
+            </label>
+            <input class="govuk-input govuk-input--width-5" id="ho-employee-cost-centre-code"
+              name="ho-employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
+              value="{{ data['ho-employee-cost-centre-code'] }}">
+          </div>
+
+        </div>
+      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

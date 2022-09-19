@@ -13,8 +13,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ "Recipient" if (data['received-or-offered'] == "received") else "Donor"}}
-      details</h1>
+    <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
+      (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details</h1>
 
     <form class="form" action="/someone-else-details-redirect" method="post">
 
@@ -26,11 +26,10 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#someone-else-name">Enter a team, unit or department name</a>
+              <a href="#someone-else-name">Enter name</a>
             </li>
             <li>
-              <a href="#home-office-representative-lookup">Enter a Home Office representative's name, employee number
-                or email and click "Search"</a>
+              <a href="#home-office-representative-lookup">Enter a Home Office representative</a>
             </li>
           </ul>
         </div>
@@ -44,7 +43,7 @@
           Could be a team, unit or department.
         </div>
         <p id="someone-else-name-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter a team, unit or department name.
+          <span class="govuk-visually-hidden">Error:</span>Enter name
         </p>
         <input class="govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-name"
           name="someone-else-name" type="text" value="{{ data['someone-else-name'] }}" autocomplete="off">
@@ -60,8 +59,7 @@
           Search for their name, employee number or email.
         </div>
         <p id="someone-else-department-lookup-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter a Home Office representative's name, employee number
-          or email and click "Search"
+          <span class="govuk-visually-hidden">Error:</span>Enter a Home Office representative
         </p>
         <input class="govuk-input govuk-input--width-20 govuk-input--error" id="home-office-representative-lookup"
           name="home-office-representative-lookup" value="{{ data['home-office-representative-lookup'] }}" type="search"
@@ -136,6 +134,53 @@
           <a id="home-office-representative-lookup-clear-selection" class="govuk-link" href="">Clear selection</a>
         </dl>
       </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            I cannot find a Home Office representative when I search
+        </summary>
+        <div class="govuk-details__text">
+          <p>Enter the Home Office representative's details.</p>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <label class="govuk-label" for="ho-employee-name">
+              Name
+            </label>
+            <p id="ho-employee-name-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's name
+            </p>
+            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-name"
+              name="ho-employee-name" type="text" spellcheck="false" autocomplete="off"
+              value="{{ data['ho-employee-name'] }}">
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <label class="govuk-label" for="ho-employee-email">
+              Email
+            </label>
+            <p id="ho-employee-name-email-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's email
+            </p>
+            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-email"
+              name="ho-employee-email" type="email" spellcheck="false" autocomplete="off"
+              value="{{ data['ho-employee-email'] }}">
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <label class="govuk-label" for="ho-employee-cost-centre-code">
+              Cost centre code
+            </label>
+            <p id="ho-employee-cost-centre-code-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's cost centre code
+            </p>
+            <input class="govuk-input govuk-input--width-5 govuk-input--error" id="ho-employee-cost-centre-code"
+              name="ho-employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
+              value="{{ data['ho-employee-cost-centre-code'] }}">
+          </div>
+
+        </div>
+      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

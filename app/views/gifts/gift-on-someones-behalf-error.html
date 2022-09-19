@@ -13,7 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/received-or-offered-redirect" method="post">
+    <form class="form" action="/gift-on-someones-behalf-redirect" method="post">
 
       <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
         data-module="govuk-error-summary">
@@ -23,43 +23,37 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#received-or-offered">Select an option to report a gift received or a
-                gift offered</a>
+              <a href="#on-someones-behalf">Select yes if you are reporting a gift on someone's behalf</a>
             </li>
           </ul>
         </div>
       </div>
 
       <div class="govuk-form-group govuk-form-group--error">
-        <fieldset class="govuk-fieldset" aria-describedby="received-or-offered-error">
+        <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              What would you like to report?
+              Are you reporting a gift on someone's behalf?
             </h1>
           </legend>
-          <div id="recieved-or-offered-hint" class="govuk-hint">
-            You must report gifts even if they were rejected.
-          </div>
-          <p id="received-or-offered-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select an option to report a gift received or a
-            gift offered
+          <p id="on-someones-behalf-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>Select yes if you are reporting a gift on someone's behalf
           </p>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="received-or-offered" name="received-or-offered" type="radio"
-                value="received" {{ checked( "received-or-offered" , "received" ) }}>
-              <label class="govuk-label govuk-radios__label" for="received-or-offered">
-                Gift received
+              <input class="govuk-radios__input" id="on-someones-behalf" name="on-someones-behalf" type="radio"
+                value="yes" {{ checked( "on-someones-behalf" , "yes" ) }}>
+              <label class="govuk-label govuk-radios__label" for="on-someones-behalf">
+                Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="received-or-offered-2" name="received-or-offered" type="radio"
-                value="offered" {{ checked( "received-or-offered" , "offered" ) }}>
-              <label class="govuk-label govuk-radios__label" for="received-or-offered-2">
-                Gift offered
+              <input class="govuk-radios__input" id="on-someones-behalf-2" name="on-someones-behalf" type="radio"
+                value="no" {{ checked( "on-someones-behalf" , "no" ) }}>
+              <label class="govuk-label govuk-radios__label" for="on-someones-behalf-2">
+                No
               </label>
             </div>
-          </div>
 
         </fieldset>
       </div>
