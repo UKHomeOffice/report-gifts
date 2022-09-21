@@ -22,29 +22,38 @@
               What would you like to report?
             </h1>
           </legend>
-          <div id="reporting-hint" class="govuk-hint">
+          <!-- <div id="reporting-hint" class="govuk-hint">
             You must report gifts even if they were rejected.
-          </div>
+          </div> -->
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="reporting" name="reporting" type="radio"
                 value="gift-received-and-accepted" {{ checked( "reporting" , "gift-received-and-accepted" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting">
+              <!-- <label class="govuk-label govuk-radios__label" for="reporting">
                 Gift received that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} accepted
+              </label> -->
+              <label class="govuk-label govuk-radios__label" for="reporting">
+                Gift {{ "I" if (data['on-someones-behalf'] == "no")}} received and accepted
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="reporting-2" name="reporting" type="radio"
                 value="gift-received-and-rejected" {{ checked( "reporting" , "gift-received-and-rejected" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting-2">
+              <!-- <label class="govuk-label govuk-radios__label" for="reporting-2">
                 Gift received that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} rejected
+              </label> -->
+              <label class="govuk-label govuk-radios__label" for="reporting-2">
+                Gift {{ "I" if (data['on-someones-behalf'] == "no")}} received and rejected
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="reporting-3" name="reporting" type="radio" value="gift-offered" {{
                 checked( "reporting" , "gift-offered" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting-3">
+              <!-- <label class="govuk-label govuk-radios__label" for="reporting-3">
                 Gift that {{ "I" if (data['on-someones-behalf'] == "no") else "was"}} offered
+              </label> -->
+              <label class="govuk-label govuk-radios__label" for="reporting-3">
+                Gift {{ "I" if (data['on-someones-behalf'] == "no")}} offered
               </label>
             </div>
           </div>

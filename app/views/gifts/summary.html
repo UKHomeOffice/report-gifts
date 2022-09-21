@@ -25,16 +25,28 @@
             Reporting
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if (data['reporting'] == "gift-received-and-accepted") %}
+            {% if (data['reporting'] == "gift-received-and-accepted" and data['on-someones-behalf'] == "yes") %}
             Gift received and accepted
             {% endif %}
 
-            {% if (data['reporting'] == "gift-received-and-rejected") %}
+            {% if (data['reporting'] == "gift-received-and-accepted" and data['on-someones-behalf'] == "no") %}
+            Gift I received and accepted
+            {% endif %}
+
+            {% if (data['reporting'] == "gift-received-and-rejected" and data['on-someones-behalf'] == "yes") %}
             Gift received and rejected
             {% endif %}
 
-            {% if (data['reporting'] == "gift-offered") %}
+            {% if (data['reporting'] == "gift-received-and-rejected" and data['on-someones-behalf'] == "no") %}
+            Gift I received and rejected
+            {% endif %}
+
+            {% if (data['reporting'] == "gift-offered" and data['on-someones-behalf'] == "yes") %}
             Gift offered
+            {% endif %}
+
+            {% if (data['reporting'] == "gift-offered" and data['on-someones-behalf'] == "no") %}
+            Gift I offered
             {% endif %}
           </dd>
         </div>
@@ -271,7 +283,7 @@
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Type of gift
+            Type
           </dt>
           <dd class="govuk-summary-list__value">
             <ul>
