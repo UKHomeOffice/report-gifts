@@ -49,7 +49,6 @@ router.post("/employee-lookup-redirect", (req, res) => {
 })
 
 router.post("/someone-else-details-redirect", (req, res) => {
-
   let name = req.session.data["someone-else-name"]
   let homeOfficeRepresentativeLookup = req.session.data["home-office-representative-lookup"]
 
@@ -59,6 +58,7 @@ router.post("/someone-else-details-redirect", (req, res) => {
     res.redirect("gifts/other-party-details")
   }
 })
+
 
 router.post("/gift-details-redirect", (req, res) => {
   let actionReported = req.session.data["reporting"]
