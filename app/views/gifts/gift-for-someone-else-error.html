@@ -13,7 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/gift-on-someones-behalf-redirect" method="post">
+    <form class="form" action="/gift-for-someone-else-redirect" method="post">
 
       <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
         data-module="govuk-error-summary">
@@ -23,7 +23,7 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#on-someones-behalf">Select yes if you are reporting a gift on someone's behalf</a>
+              <a href="#for-someone-else">Select yes if you are reporting a gift for someone else</a>
             </li>
           </ul>
         </div>
@@ -33,24 +33,24 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Are you reporting a gift on someone's behalf?
+              Are you reporting a gift for someone else?
             </h1>
           </legend>
-          <p id="on-someones-behalf-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span>Select yes if you are reporting a gift on someone's behalf
+          <p id="for-someone-else-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>Select yes if you are reporting a gift for someone else
           </p>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="on-someones-behalf" name="on-someones-behalf" type="radio"
-                value="yes" {{ checked( "on-someones-behalf" , "yes" ) }}>
-              <label class="govuk-label govuk-radios__label" for="on-someones-behalf">
+              <input class="govuk-radios__input" id="for-someone-else" name="for-someone-else" type="radio" value="yes"
+                {{ checked( "for-someone-else" , "yes" ) }}>
+              <label class="govuk-label govuk-radios__label" for="for-someone-else">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="on-someones-behalf-2" name="on-someones-behalf" type="radio"
-                value="no" {{ checked( "on-someones-behalf" , "no" ) }}>
-              <label class="govuk-label govuk-radios__label" for="on-someones-behalf-2">
+              <input class="govuk-radios__input" id="for-someone-else-2" name="for-someone-else" type="radio" value="no"
+                {{ checked( "for-someone-else" , "no" ) }}>
+              <label class="govuk-label govuk-radios__label" for="for-someone-else-2">
                 No
               </label>
             </div>

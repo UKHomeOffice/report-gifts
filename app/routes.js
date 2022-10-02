@@ -4,10 +4,10 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 ///// NAVIGATION ROUTES START /////
-router.post("/gift-on-someones-behalf-redirect", (req, res) => {
-  let onSomeonesBehalf = req.session.data["on-someones-behalf"]
-  if (onSomeonesBehalf == undefined) {
-    res.redirect("gifts/gift-on-someones-behalf-error")
+router.post("/gift-for-someone-else-redirect", (req, res) => {
+  let forSomeoneElse = req.session.data["for-someone-else"]
+  if (forSomeoneElse == undefined) {
+    res.redirect("gifts/gift-for-someone-else-error")
   } else {
     res.redirect("gifts/reporting")
   }
@@ -15,12 +15,12 @@ router.post("/gift-on-someones-behalf-redirect", (req, res) => {
 
 router.post("/reporting-redirect", (req, res) => {
   let reporting = req.session.data["reporting"]
-  let onSomeonesBehalf = req.session.data["on-someones-behalf"]
+  let forSomeoneElse = req.session.data["for-someone-else"]
   if (reporting == undefined) {
     res.redirect("gifts/reporting-error")
-  } else if (reporting != undefined && onSomeonesBehalf == "yes") {
+  } else if (reporting != undefined && forSomeoneElse == "yes") {
     res.redirect("gifts/on-behalf-of")
-  } else if (reporting != undefined && onSomeonesBehalf == "no") {
+  } else if (reporting != undefined && forSomeoneElse == "no") {
     res.redirect("gifts/other-party-details")
   }
 })
@@ -65,15 +65,15 @@ router.post("/gift-details-redirect", (req, res) => {
   let giftDate = req.session.data["date-received-or-offered"]
   let giftReason = req.session.data['reason-for-gift']
   let giftCost = req.session.data['cost-of-gift']
-  let onSomeonesBehalf = req.session.data["on-someones-behalf"]
+  let forSomeoneElse = req.session.data["for-someone-else"]
 
   if (giftDate == "" && giftReason == "" && giftCost == "") {
     res.redirect("gifts/gift-details-error")
   }
 
-  if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && onSomeonesBehalf == "no") {
+  if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && forSomeoneElse == "no") {
     res.redirect("gifts/summary")
-  } else if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && onSomeonesBehalf == "yes") {
+  } else if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && forSomeoneElse == "yes") {
     res.redirect("gifts/delegated-authority-approval")
   } else {
     res.redirect("gifts/approved-supplier")
@@ -83,18 +83,18 @@ router.post("/gift-details-redirect", (req, res) => {
 //CDM: Skip non-approved-supplier-used-reason.html when an approved supplier is used
 router.post("/approved-supplier-redirect", (req, res) => {
   let approvedSupplierUsed = req.session.data["approved-supplier-used"]
-  let onSomeonesBehalf = req.session.data["on-someones-behalf"]
+  let forSomeoneElse = req.session.data["for-someone-else"]
   let approverSupplierNotUsedReason = req.session.data["approved-supplier-not-used-reason"]
 
-  if (approvedSupplierUsed == "yes" && onSomeonesBehalf == "yes") {
+  if (approvedSupplierUsed == "yes" && forSomeoneElse == "yes") {
     res.redirect("gifts/delegated-authority-approval")
-  } else if (approvedSupplierUsed == "yes" && onSomeonesBehalf == "no") {
+  } else if (approvedSupplierUsed == "yes" && forSomeoneElse == "no") {
     res.redirect("gifts/summary")
   } else if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
     res.redirect("gifts/approved-supplier-reason-error")
-  } else if (approvedSupplierUsed == "no" && onSomeonesBehalf == "yes" && approverSupplierNotUsedReason != "") {
+  } else if (approvedSupplierUsed == "no" && forSomeoneElse == "yes" && approverSupplierNotUsedReason != "") {
     res.redirect("gifts/delegated-authority-approval")
-  } else if (approvedSupplierUsed == "no" && onSomeonesBehalf == "no" && approverSupplierNotUsedReason != "") {
+  } else if (approvedSupplierUsed == "no" && forSomeoneElse == "no" && approverSupplierNotUsedReason != "") {
     res.redirect("gifts/summary")
   }
 })
@@ -105,7 +105,7 @@ router.post("/delegated-authority-approval-redirect", (req, res) => {
   if (delegatedAuthorityApproval == "yes") {
     res.redirect("gifts/approver-lookup")
   } else {
-    res.redirect("gifts/delegated-authority-disapproval-reason")
+    res.redirect("gifts/summary")
   }
 })
 ///// NAVIGATION ROUTES END /////

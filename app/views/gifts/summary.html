@@ -25,33 +25,33 @@
             Reporting
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if (data['reporting'] == "gift-received-and-accepted" and data['on-someones-behalf'] == "yes") %}
+            {% if (data['reporting'] == "gift-received-and-accepted" and data['for-someone-else'] == "yes") %}
             Gift received and accepted
             {% endif %}
 
-            {% if (data['reporting'] == "gift-received-and-accepted" and data['on-someones-behalf'] == "no") %}
+            {% if (data['reporting'] == "gift-received-and-accepted" and data['for-someone-else'] == "no") %}
             Gift I received and accepted
             {% endif %}
 
-            {% if (data['reporting'] == "gift-received-and-rejected" and data['on-someones-behalf'] == "yes") %}
+            {% if (data['reporting'] == "gift-received-and-rejected" and data['for-someone-else'] == "yes") %}
             Gift received and rejected
             {% endif %}
 
-            {% if (data['reporting'] == "gift-received-and-rejected" and data['on-someones-behalf'] == "no") %}
+            {% if (data['reporting'] == "gift-received-and-rejected" and data['for-someone-else'] == "no") %}
             Gift I received and rejected
             {% endif %}
 
-            {% if (data['reporting'] == "gift-offered" and data['on-someones-behalf'] == "yes") %}
+            {% if (data['reporting'] == "gift-offered" and data['for-someone-else'] == "yes") %}
             Gift offered
             {% endif %}
 
-            {% if (data['reporting'] == "gift-offered" and data['on-someones-behalf'] == "no") %}
+            {% if (data['reporting'] == "gift-offered" and data['for-someone-else'] == "no") %}
             Gift I offered
             {% endif %}
           </dd>
         </div>
 
-        {% if (data['on-someones-behalf'] == "yes") %}
+        {% if (data['for-someone-else'] == "yes") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Delegated authority approval obtained
@@ -61,19 +61,19 @@
           </dd>
         </div>
         {% endif %}
-        {% if (data['on-someones-behalf'] == "yes" and data['delegated-authority-approval'] == "no") %}
+        {% if (data['for-someone-else'] == "yes" and data['delegated-authority-approval'] == "no") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Reasons why delegated authority approval was not obtained
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['reason-for-disapproval'] }}
+            {{ data['delegated-authority-disapproval-reason'] }}
           </dd>
         </div>
         {% endif %}
       </dl>
 
-      {% if (data['on-someones-behalf'] == "no") %}
+      {% if (data['for-someone-else'] == "no") %}
       <h2 class="govuk-heading-m">
         {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
         (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
@@ -130,7 +130,7 @@
       </dl>
       {% endif %}
 
-      {% if (data['on-someones-behalf'] == "yes" and data['on-behalf-of'] == "employee") %}
+      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "employee") %}
       <h2 class="govuk-heading-m">
         {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
         (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
@@ -187,7 +187,7 @@
       </dl>
       {% endif %}
 
-      {% if (data['on-someones-behalf'] == "yes" and data['on-behalf-of'] == "other") %}
+      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "other") %}
       <h2 class="govuk-heading-m">
         {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
         (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
@@ -376,7 +376,7 @@
       </dl>
 
 
-      {% if (data['on-someones-behalf'] == "yes" and data['delegated-authority-approval'] == "yes") %}
+      {% if (data['for-someone-else'] == "yes" and data['delegated-authority-approval'] == "yes") %}
       <h2 class="govuk-heading-m">Approver details</h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
