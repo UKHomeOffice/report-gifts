@@ -28,7 +28,7 @@ router.post("/reporting-redirect", (req, res) => {
 //CDM: Route to employee-lookup.html or other-recipient-or-donor-details.html based on who the gift recipient/donor is
 router.post("/on-behalf-of-redirect", (req, res) => {
   let giftOnBehalfOf = req.session.data["on-behalf-of"]
-  if (giftOnBehalfOf == "employee") {
+  if (giftOnBehalfOf == "individual") {
     res.redirect("gifts/employee-lookup")
   } else {
     res.redirect("gifts/someone-else-details")
@@ -60,7 +60,7 @@ router.post("/someone-else-details-redirect", (req, res) => {
 })
 
 
-router.post("/gift-details-redirect", (req, res) => {
+router.post("/gift-more-details-redirect", (req, res) => {
   let actionReported = req.session.data["reporting"]
   let giftDate = req.session.data["date-received-or-offered"]
   let giftReason = req.session.data['reason-for-gift']
@@ -68,7 +68,7 @@ router.post("/gift-details-redirect", (req, res) => {
   let forSomeoneElse = req.session.data["for-someone-else"]
 
   if (giftDate == "" && giftReason == "" && giftCost == "") {
-    res.redirect("gifts/gift-details-error")
+    res.redirect("gifts/gift-more-details-error")
   }
 
   if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && forSomeoneElse == "no") {

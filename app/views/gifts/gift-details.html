@@ -15,55 +15,60 @@
 
     <h1 class="govuk-heading-l">Gift details</h1>
 
-    <form class="form" action="/gift-details-redirect" method="post">
+    <form class="form" action="gift-more-details" method="post">
 
       <div class="govuk-form-group">
-        <label class="govuk-label govuk-label--m" for="date-received-or-offered">
-          Date {{ "received" if (data['reporting'] == "gift-received-and-accepted") or
-          (data['reporting'] == "gift-received-and-rejected") else "donated"}}
-        </label>
-        <input class="govuk-input govuk-input--width-10" id="date-received-or-offered" name="date-received-or-offered"
-          value="{{ data['date-received-or-offered'] }}" type="date" autocomplete="off">
+        <fieldset class="govuk-fieldset" aria-describedby="gift-type-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Type
+          </legend>
+          <div id="gift-type-hint" class="govuk-hint">
+            Select all that apply.
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-5" name="gift-type" type="checkbox"
+                value="perishable" {{ checked( "gift-type" , "perishable" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-5">
+                Perishable gift
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-6" name="gift-type" type="checkbox"
+                value="imperishable" {{ checked( "gift-type" , "imperishable" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-6">
+                Imperishable gift
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-3" name="gift-type" type="checkbox" value="travel" {{
+                checked( "gift-type" , "travel" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-3">
+                Travel
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="gift-type-4" name="gift-type" type="checkbox" value="cash" {{
+                checked( "gift-type" , "cash" ) }}>
+              <label class="govuk-label govuk-checkboxes__label" for="gift-type-4">
+                Cash
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for {{ "receiving" if (data['reporting'] == "gift-received-and-accepted") or
-          (data['reporting'] == "gift-received-and-rejected") else "donating"}} the gift
+        <label class="govuk-label govuk-label--m" for="gift-description">
+          Description
         </label>
-        <div id="reason-for-gift-hint" class="govuk-hint">
-          For example, a diplomatic gesture.
+        <div id="gift-description-hint" class="govuk-hint">
+          For example, a bronze-plated medal.
         </div>
-        <input class="govuk-input" id="reason-for-gift" name="reason-for-gift" value="{{ data['reason-for-gift'] }}"
+        <input class="govuk-input" id="gift-description" name="gift-description" value="{{ data['gift-description'] }}"
           type="text" autocomplete="off">
       </div>
 
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-label--m" for="cost-of-gift">
-          Cost, in pounds
-        </label>
-        <div id="cost-of-gift-hint" class="govuk-hint">
-          You can check current prices with online retailers to determine cost.
-        </div>
-        <div class="govuk-input__wrapper">
-          <div class="govuk-input__prefix" aria-hidden="true">£</div>
-          <input class="govuk-input govuk-input--width-5" id="cost-of-gift" name="cost-of-gift"
-            value="{{ data['cost-of-gift'] }}" type="text" spellcheck="false" autocomplete="off">
-        </div>
-      </div>
-
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            What do I do if my gift is made up of multiple items
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <p>You must value gifts made up of more than one item as a whole, not as the sum of the individual items. For
-            example, the total cost of a hamper is the price of the hamper, not the price of the individual items making
-            up the hamper.</p>
-        </div>
-      </details>
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

@@ -130,7 +130,7 @@
       </dl>
       {% endif %}
 
-      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "employee") %}
+      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "individual") %}
       <h2 class="govuk-heading-m">
         {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
         (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
@@ -187,7 +187,7 @@
       </dl>
       {% endif %}
 
-      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "other") %}
+      {% if (data['for-someone-else'] == "yes" and data['on-behalf-of'] == "team-unit-department") %}
       <h2 class="govuk-heading-m">
         {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
         (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
