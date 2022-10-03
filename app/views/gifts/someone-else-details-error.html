@@ -26,7 +26,7 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#someone-else-name">Enter name</a>
+              <a href="#team-unit-or-department-name">Enter a team, unit or department name</a>
             </li>
             <li>
               <a href="#home-office-representative-lookup">Enter a Home Office representative</a>
@@ -36,17 +36,15 @@
       </div>
 
       <div class="govuk-form-group govuk-form-group--error">
-        <label class="govuk-label govuk-label--m" for="someone-else-name">
-          Name
+        <label class="govuk-label govuk-label--m" for="team-unit-or-department-name">
+          Team, unit or department
         </label>
-        <div id="someone-else-name-hint" class="govuk-hint">
-          Could be a team, unit or department.
-        </div>
-        <p id="someone-else-name-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter name
+        <p id="team-unit-or-department-name-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span>Enter a team, unit or department name
         </p>
-        <input class="govuk-input govuk-input--width-20 govuk-input--error" id="someone-else-name"
-          name="someone-else-name" type="text" value="{{ data['someone-else-name'] }}" autocomplete="off">
+        <input class="govuk-input govuk-input--width-20" id="team-unit-or-department-name"
+          name="team-unit-or-department-name" type="text" autocomplete="off"
+          value="{{ data['team-unit-or-department-name'] }}">
       </div>
 
       <div class="govuk-form-group govuk-form-group--error lookup">

@@ -19,14 +19,12 @@
     <form class="form" action="/someone-else-details-redirect" method="post">
 
       <div class="govuk-form-group">
-        <label class="govuk-label govuk-label--m" for="someone-else-name">
-          Name
+        <label class="govuk-label govuk-label--m" for="team-unit-or-department-name">
+          Team, unit or department
         </label>
-        <div id="someone-else-name-hint" class="govuk-hint">
-          Could be a team, unit or department.
-        </div>
-        <input class="govuk-input govuk-input--width-20" id="someone-else-name" name="someone-else-name" type="text"
-          autocomplete="off" value="{{ data['someone-else-name'] }}">
+        <input class="govuk-input govuk-input--width-20" id="team-unit-or-department-name"
+          name="team-unit-or-department-name" type="text" autocomplete="off"
+          value="{{ data['team-unit-or-department-name'] }}">
       </div>
 
       <div class="govuk-form-group lookup">

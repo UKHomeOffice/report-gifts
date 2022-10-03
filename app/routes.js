@@ -49,10 +49,10 @@ router.post("/employee-lookup-redirect", (req, res) => {
 })
 
 router.post("/someone-else-details-redirect", (req, res) => {
-  let name = req.session.data["someone-else-name"]
+  let teamUnitOrDepartmentName = req.session.data["team-unit-or-department-name"]
   let homeOfficeRepresentativeLookup = req.session.data["home-office-representative-lookup"]
 
-  if (name == "" && homeOfficeRepresentativeLookup == "") {
+  if (teamUnitOrDepartmentName == "" && homeOfficeRepresentativeLookup == "") {
     res.redirect("gifts/someone-else-details-error")
   } else {
     res.redirect("gifts/other-party-details")
