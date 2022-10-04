@@ -19,7 +19,11 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              What are you reporting?
+              {% if (data['for-someone-else'] == "no") %}
+              Did you receive or offer a gift?
+              {% else %}
+              Did they receive or offer a gift?
+              {% endif %}
             </h1>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
@@ -27,14 +31,14 @@
               <input class="govuk-radios__input" id="reporting" name="reporting" type="radio" value="gift-received" {{
                 checked( "reporting" , "gift-received" ) }}>
               <label class="govuk-label govuk-radios__label" for="reporting">
-                Gift {{ "I" if (data['for-someone-else'] == "no")}} received
+                Receive
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="reporting-2" name="reporting" type="radio" value="gift-offered" {{
                 checked( "reporting" , "gift-offered" ) }}>
               <label class="govuk-label govuk-radios__label" for="reporting-2">
-                Gift {{ "I" if (data['for-someone-else'] == "no")}} offered
+                Offer
               </label>
             </div>
           </div>

@@ -28,7 +28,7 @@
               <a href="#team-unit-or-department-name">Enter a team, unit or department name</a>
             </li>
             <li>
-              <a href="#home-office-representative-lookup">Enter a Home Office representative</a>
+              <a href="#home-office-representative-lookup">Enter a representative</a>
             </li>
           </ul>
         </div>
@@ -49,14 +49,14 @@
       <div class="govuk-form-group govuk-form-group--error lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m"
             for="home-office-representative-lookup">
-            Home Office representative
+            Representative
           </label>
         </h1>
         <div id="home-office-representative-lookup-hint" class="govuk-hint">
-          Search for their name, employee number or email.
+          Search for the name, employee number or email of a representative for the group.
         </div>
         <p id="someone-else-department-lookup-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter a Home Office representative
+          <span class="govuk-visually-hidden">Error:</span>Enter a representative
         </p>
         <input class="govuk-input govuk-input--width-20 govuk-input--error" id="home-office-representative-lookup"
           name="home-office-representative-lookup" value="{{ data['home-office-representative-lookup'] }}" type="search"
@@ -135,17 +135,17 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find a Home Office representative when I search
+            I cannot find a representative when I search
         </summary>
         <div class="govuk-details__text">
-          <p>Enter the Home Office representative's details.</p>
+          <p>Enter the representative's details.</p>
 
           <div class="govuk-form-group govuk-form-group--error">
             <label class="govuk-label" for="ho-employee-name">
               Name
             </label>
             <p id="ho-employee-name-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's name
+              <span class="govuk-visually-hidden">Error:</span>Enter the representative's name
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-name"
               name="ho-employee-name" type="text" spellcheck="false" autocomplete="off"
@@ -157,7 +157,7 @@
               Email
             </label>
             <p id="ho-employee-name-email-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's email
+              <span class="govuk-visually-hidden">Error:</span>Enter the representative's email
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-email"
               name="ho-employee-email" type="email" spellcheck="false" autocomplete="off"
@@ -169,7 +169,7 @@
               Cost centre code
             </label>
             <p id="ho-employee-cost-centre-code-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the Home Office representative's cost centre code
+              <span class="govuk-visually-hidden">Error:</span>Enter the representative's cost centre code
             </p>
             <input class="govuk-input govuk-input--width-5 govuk-input--error" id="ho-employee-cost-centre-code"
               name="ho-employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"

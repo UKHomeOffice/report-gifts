@@ -33,7 +33,7 @@
                 "donating"}} the gift</a>
             </li>
             <li>
-              <a href="#cost-of-gift">Enter total cost, in pounds</a>
+              <a href="#cost-of-gift">Enter cost, in pounds</a>
             </li>
           </ul>
         </div>
@@ -68,10 +68,13 @@
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="cost-of-gift">
-          Total cost, in pounds
+          Cost, in pounds
         </label>
+        <div id="cost-of-gift-hint" class="govuk-hint">
+          You can check current prices with online retailers to determine cost.
+        </div>
         <p id="cost-of-gift-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter total cost, in pounds
+          <span class="govuk-visually-hidden">Error:</span>Enter cost, in pounds
         </p>
         <div class="govuk-input__wrapper">
           <div class="govuk-input__prefix" aria-hidden="true">£</div>
@@ -83,16 +86,13 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I do not know how much it cost
+            What if my gift is made up of more than one item?
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p>You can check current prices with online retailers to determine cost.</p>
-
-          <p>You must value gifts made up of more than one item as a whole, not as the sum of the individual items.</p>
-
-          <p>For example, the total cost of a hamper is the price of the hamper, not the price of the individual items
-            making up the hamper.</p>
+          <p>You must value gifts made up of more than one item as a whole, not as the sum of the individual items. For
+            example, the total cost of a hamper is the price of the hamper, not the price of the individual items making
+            up the hamper.</p>
         </div>
       </details>
 
