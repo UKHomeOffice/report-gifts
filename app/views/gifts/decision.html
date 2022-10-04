@@ -13,33 +13,39 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/reporting-redirect" method="post">
+    <form class="form" action="other-party-details" method="post">
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              What are you reporting?
+              {% if (data['reporting'] == "gift-received") and (data['for-someone-else'] == "no")%}
+              Did you accept or reject the gift?
+              {% else %}
+              Did the recipient accept or reject the gift?
+              {% endif %}
             </h1>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reporting" name="reporting" type="radio" value="gift-received" {{
-                checked( "reporting" , "gift-received" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting">
-                Gift {{ "I" if (data['for-someone-else'] == "no")}} received
+              <input class="govuk-radios__input" id="gift-decision" name="gift-decision" type="radio" value="accept" {{
+                checked( "gift-decision" , "accept" ) }}>
+              <label class="govuk-label govuk-radios__label" for="gift-decision">
+                Accepted
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reporting-2" name="reporting" type="radio" value="gift-offered" {{
-                checked( "reporting" , "gift-offered" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting-2">
-                Gift {{ "I" if (data['for-someone-else'] == "no")}} offered
+              <input class="govuk-radios__input" id="gift-decision-2" name="gift-decision" type="radio" value="reject"
+                {{ checked( "gift-decision" , "reject" ) }}>
+              <label class="govuk-label govuk-radios__label" for="gift-decision-2">
+                Rejected
               </label>
             </div>
           </div>
+
         </fieldset>
       </div>
+
 
       <button class="govuk-button" data-module="govuk-button">Continue</button>
 

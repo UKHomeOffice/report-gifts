@@ -13,8 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
-      (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details</h1>
+    <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details</h1>
 
     <form class="form" action="/someone-else-details-redirect" method="post">
 

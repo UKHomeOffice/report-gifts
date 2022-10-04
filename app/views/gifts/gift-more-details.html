@@ -19,8 +19,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="date-received-or-offered">
-          Date {{ "received" if (data['reporting'] == "gift-received-and-accepted") or
-          (data['reporting'] == "gift-received-and-rejected") else "donated"}}
+          Date {{ "received" if (data['reporting'] == "gift-received") else "donated"}}
         </label>
         <input class="govuk-input govuk-input--width-10" id="date-received-or-offered" name="date-received-or-offered"
           value="{{ data['date-received-or-offered'] }}" type="date" autocomplete="off">
@@ -28,8 +27,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for {{ "receiving" if (data['reporting'] == "gift-received-and-accepted") or
-          (data['reporting'] == "gift-received-and-rejected") else "donating"}} the gift
+          Reason for {{ "receiving" if (data['reporting'] == "gift-received") else "donating"}} the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.

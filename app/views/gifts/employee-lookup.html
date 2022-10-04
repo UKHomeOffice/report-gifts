@@ -17,8 +17,7 @@
 
       <div class="govuk-form-group lookup">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
-            {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
+            {{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
@@ -100,12 +99,10 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "donor"}} when I search
+            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received") else "donor"}} when I search
         </summary>
         <div class="govuk-details__text">
-          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "donor's"}} details.</p>
+          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received") else "donor's"}} details.</p>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="employee-name">

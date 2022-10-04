@@ -6,6 +6,7 @@ const router = express.Router()
 ///// NAVIGATION ROUTES START /////
 router.post("/gift-for-someone-else-redirect", (req, res) => {
   let forSomeoneElse = req.session.data["for-someone-else"]
+
   if (forSomeoneElse == undefined) {
     res.redirect("gifts/gift-for-someone-else-error")
   } else {
@@ -16,12 +17,14 @@ router.post("/gift-for-someone-else-redirect", (req, res) => {
 router.post("/reporting-redirect", (req, res) => {
   let reporting = req.session.data["reporting"]
   let forSomeoneElse = req.session.data["for-someone-else"]
+
   if (reporting == undefined) {
     res.redirect("gifts/reporting-error")
   } else if (reporting != undefined && forSomeoneElse == "yes") {
     res.redirect("gifts/on-behalf-of")
   } else if (reporting != undefined && forSomeoneElse == "no") {
-    res.redirect("gifts/other-party-details")
+    // res.redirect("gifts/other-party-details")
+    res.redirect("gifts/decision")
   }
 })
 
@@ -44,7 +47,7 @@ router.post("/employee-lookup-redirect", (req, res) => {
   if (employeeLookup == "" && (employeeName == "" || employeeEmail == "" || employeeCCC == "")) {
     res.redirect("gifts/employee-lookup-error")
   } else {
-    res.redirect("gifts/other-party-details")
+    res.redirect("gifts/decision")
   }
 })
 
@@ -55,10 +58,9 @@ router.post("/someone-else-details-redirect", (req, res) => {
   if (teamUnitOrDepartmentName == "" && homeOfficeRepresentativeLookup == "") {
     res.redirect("gifts/someone-else-details-error")
   } else {
-    res.redirect("gifts/other-party-details")
+    res.redirect("gifts/decision")
   }
 })
-
 
 router.post("/gift-more-details-redirect", (req, res) => {
   let actionReported = req.session.data["reporting"]
@@ -71,9 +73,9 @@ router.post("/gift-more-details-redirect", (req, res) => {
     res.redirect("gifts/gift-more-details-error")
   }
 
-  if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && forSomeoneElse == "no") {
+  if (actionReported == "gift-received" && forSomeoneElse == "no") {
     res.redirect("gifts/summary")
-  } else if ((actionReported == "gift-received-and-accepted" || actionReported == "gift-received-and-rejected") && forSomeoneElse == "yes") {
+  } else if (actionReported == "gift-received" && forSomeoneElse == "yes") {
     res.redirect("gifts/delegated-authority-approval")
   } else {
     res.redirect("gifts/approved-supplier")

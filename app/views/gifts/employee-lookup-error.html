@@ -23,8 +23,8 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#employee-lookup">Enter {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
-                (data['reporting'] == "gift-received-and-rejected") else "donor"}} details</a>
+              <a href="#employee-lookup">Enter {{ "recipient" if (data['reporting'] == "gift-received") else "donor"}}
+                details</a>
             </li>
           </ul>
         </div>
@@ -32,8 +32,7 @@
 
       <div class="govuk-form-group lookup govuk-form-group--error">
         <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
-            {{ "Recipient" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "Donor"}} details
+            {{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
@@ -41,7 +40,7 @@
         </div>
         <p id="employee-lookup-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span>Enter {{ "recipient" if (data['reporting'] ==
-          "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor"}} details
+          "gift-received") else "donor"}} details
         </p>
         <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-lookup" name="employee-lookup"
           type="search" autocomplete="off" value="{{ data['employee-lookup'] }}">
@@ -119,12 +118,10 @@
       <details class="govuk-details" data-module="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "donor"}} when I search
+            I cannot find the {{ "recipient" if (data['reporting'] == "gift-received") else "donor"}} when I search
         </summary>
         <div class="govuk-details__text">
-          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "donor's"}} details.
+          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received") else "donor's"}} details.
           </p>
           <div class="govuk-form-group govuk-form-group--error">
             <label class="govuk-label" for="employee-name">
@@ -132,7 +129,7 @@
             </label>
             <p id="employee-name-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}} name
+              "gift-received") else "donor's"}} name
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-name" name="employee-name"
               type="text" spellcheck="false" autocomplete="off" value="{{ data['employee-name'] }}">
@@ -144,7 +141,7 @@
             </label>
             <p id="employee-email-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}}
+              "gift-received") else "donor's"}}
               email
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-email"
@@ -158,8 +155,7 @@
             </label>
             <p id="employee-cost-centre-code-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received-and-accepted") or (data['reporting'] == "gift-received-and-rejected") else "donor's"}}
-              cost centre code
+              "gift-received") else "donor's"}} cost centre code
             </p>
             <input class="govuk-input govuk-input--width-5 govuk-input--error" id="employee-cost-centre-code"
               name="employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
