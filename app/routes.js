@@ -92,7 +92,7 @@ router.post("/approved-supplier-redirect", (req, res) => {
   } else if (approvedSupplierUsed == "yes" && forSomeoneElse == "no") {
     res.redirect("gifts/summary")
   } else if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
-    res.redirect("gifts/approved-supplier-reason-error")
+    res.redirect("gifts/approved-supplier-error")
   } else if (approvedSupplierUsed == "no" && forSomeoneElse == "yes" && approverSupplierNotUsedReason != "") {
     res.redirect("gifts/delegated-authority-approval")
   } else if (approvedSupplierUsed == "no" && forSomeoneElse == "no" && approverSupplierNotUsedReason != "") {
