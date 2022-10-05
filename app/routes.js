@@ -23,7 +23,6 @@ router.post("/reporting-redirect", (req, res) => {
   } else if (reporting != undefined && forSomeoneElse == "yes") {
     res.redirect("gifts/on-behalf-of")
   } else if (reporting != undefined && forSomeoneElse == "no") {
-    // res.redirect("gifts/other-party-details")
     res.redirect("gifts/decision")
   }
 })

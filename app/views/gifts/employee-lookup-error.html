@@ -128,8 +128,7 @@
               Name
             </label>
             <p id="employee-name-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received") else "donor's"}} name
+              <span class="govuk-visually-hidden">Error:</span>Enter name
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-name" name="employee-name"
               type="text" spellcheck="false" autocomplete="off" value="{{ data['employee-name'] }}">
@@ -140,9 +139,7 @@
               Email
             </label>
             <p id="employee-email-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received") else "donor's"}}
-              email
+              <span class="govuk-visually-hidden">Error:</span>Enter email
             </p>
             <input class="govuk-input govuk-input--width-20 govuk-input--error" id="employee-email"
               name="employee-email" type="email" spellcheck="false" autocomplete="off"
@@ -154,8 +151,7 @@
               Cost centre code
             </label>
             <p id="employee-cost-centre-code-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter the {{ "recipient's" if (data['reporting'] ==
-              "gift-received") else "donor's"}} cost centre code
+              <span class="govuk-visually-hidden">Error:</span>Enter cost centre code
             </p>
             <input class="govuk-input govuk-input--width-5 govuk-input--error" id="employee-cost-centre-code"
               name="employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"

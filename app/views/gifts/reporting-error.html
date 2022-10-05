@@ -23,7 +23,13 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#reporting">Select what you are reporting</a>
+              <a href="#reporting">
+                {% if (data['for-someone-else'] == "no") %}
+                Select if you received or offered a gift
+                {% else %}
+                Select if they received or offered a gift
+                {% endif %}
+              </a>
             </li>
           </ul>
         </div>
@@ -41,7 +47,12 @@
             </h1>
           </legend>
           <p id="reporting-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span>Select what you are reporting
+            <span class="govuk-visually-hidden">Error:</span>
+            {% if (data['for-someone-else'] == "no") %}
+            Select if you received or offered a gift
+            {% else %}
+            Select if they received or offered a gift
+            {% endif %}
           </p>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
