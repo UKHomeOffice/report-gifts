@@ -70,7 +70,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-<div class="govuk-breadcrumbs">
+<!-- <div class="govuk-breadcrumbs">
   <ol class="govuk-breadcrumbs__list">
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
@@ -88,17 +88,17 @@
       <a class="govuk-breadcrumbs__link">Gifts and hospitality</a>
     </li>
   </ol>
-</div>
+</div> -->
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
+
+  <h1 class="govuk-heading-l">
+    {% if serviceName %} {{ serviceName }} {% endif %}
+  </h1>
+
   <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-l">
-      {% if serviceName %} {{ serviceName }} {% endif %}
-    </h1>
-
     <p>Use this service to report a gift you:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>received (even if you rejected it)</li>
@@ -149,28 +149,30 @@
   </div>
 
   <div class="govuk-grid-column-one-third">
-
-
     <aside class="app-related-items" role="complementary">
       <h3 class="govuk-heading-s" id="subsection-title">
-        Policy and guidance
+        Related content
       </h3>
       <nav role="navigation" aria-labelledby="subsection-title">
         <ul class="govuk-list govuk-!-font-size-16">
           <li>
-            <a href="#">
-              Gifts and hospitality: policy
+            <a href="https://ehdg--tst6.cx.ukg.oraclecloud.com/app/answers/detail/a_id/3883" rel="noreferrer noopener">
+              Gifts and hospitality: principles
             </a>
-            <span>(DOCX, 88KB)</span>
           </li>
-        </ul>
+          <li>
+            <a href="https://ehdg--tst6.cx.ukg.oraclecloud.com/app/answers/detail/a_id/5012" rel="noreferrer noopener">
+              Receiving or offering gifts
+            </a>
+          </li>
+          <!-- </ul>
       </nav>
       <br />
       <h3 class="govuk-heading-s" id="subsection-title">
         Requests and forms
       </h3>
       <nav role="navigation" aria-labelledby="subsection-title">
-        <ul class="govuk-list govuk-!-font-size-16">
+        <ul class="govuk-list govuk-!-font-size-16"> -->
           <li>
             <a href="http://report-hospitality.herokuapp.com/hospitality/start" rel="noreferrer noopener"
               target="_blank">
@@ -179,21 +181,7 @@
           </li>
         </ul>
       </nav>
-      <br />
-      <h3 class="govuk-heading-s" id="subsection-title">
-        Help and support
-      </h3>
-      <nav role="navigation" aria-labelledby="subsection-title">
-        <ul class="govuk-list govuk-!-font-size-16">
-          <li>
-            <a href="#">
-              How can we help?
-            </a>
-          </li>
-        </ul>
-      </nav>
     </aside>
-
   </div>
 </div>
 {% endblock %}
