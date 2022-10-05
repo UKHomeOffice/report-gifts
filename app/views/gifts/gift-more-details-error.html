@@ -26,7 +26,7 @@
           <ul class="govuk-list govuk-error-summary__list">
             <li>
               <a href="#date-received-or-offered">Enter date {{ "received" if (data['reporting'] == "gift-received")
-                else "donated"}}</a>
+                else "offered"}}</a>
             </li>
             <li>
               <a href="#reason-for-gift">Enter reason for {{ "receiving" if (data['reporting'] == "gift-received") else
@@ -41,11 +41,11 @@
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="date-received-or-offered">
-          Date {{ "received" if (data['reporting'] == "gift-received") else "donated"}}
+          Date {{ "received" if (data['reporting'] == "gift-received") else "offered"}}
         </label>
         <p id="date-received-or-offered-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span>Enter date {{ "received" if (data['reporting'] ==
-          "gift-received") else "donated"}}
+          "gift-received") else "offered"}}
         </p>
         <input class="govuk-input govuk-input--width-10 govuk-input--error" id="date-received-or-offered"
           name="date-received-or-offered" value="{{ data['date-received-or-offered'] }}" type="date" autocomplete="off">
@@ -53,14 +53,14 @@
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for {{ "receiving" if (data['reporting'] == "gift-received") else "donating"}} the gift
+          Reason for {{ "receiving" if (data['reporting'] == "gift-received") else "offering"}} the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.
         </div>
         <p id="reason-for-gift-error" class="govuk-error-message">
           <span class="govuk-visually-hidden">Error:</span>Enter reason for {{ "receiving" if (data['reporting'] ==
-          "gift-received") else "donating"}} the gift
+          "gift-received") else "offering"}} the gift
         </p>
         <input class="govuk-input govuk-input--error" id="reason-for-gift" name="reason-for-gift"
           value="{{ data['reason-for-gift'] }}" type="text" autocomplete="off">
