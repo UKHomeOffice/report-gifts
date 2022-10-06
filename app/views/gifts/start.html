@@ -93,10 +93,11 @@
 
 {% block content %}
 <div class="govuk-grid-row">
-
-  <h1 class="govuk-heading-l">
-    {% if serviceName %} {{ serviceName }} {% endif %}
-  </h1>
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      {% if serviceName %} {{ serviceName }} {% endif %}
+    </h1>
+  </div>
 
   <div class="govuk-grid-column-two-thirds">
     <p>Use this service to report a gift you:</p>
