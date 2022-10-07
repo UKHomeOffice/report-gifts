@@ -338,7 +338,7 @@
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Reason for {{ "receiving" if (data['reporting'] == "gift-received-and-accepted") or
-            (data['reporting'] == "gift-received-and-rejected") else "donating"}} the gift
+            (data['reporting'] == "gift-received-and-rejected") else "offering"}} the gift
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['reason-for-gift'] }}
@@ -346,7 +346,7 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Total cost
+            Cost
           </dt>
           <dd class="govuk-summary-list__value">
             £{{ data['cost-of-gift'] }}

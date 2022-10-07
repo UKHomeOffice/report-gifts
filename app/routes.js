@@ -4,7 +4,7 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 ///// NAVIGATION ROUTES START /////
-router.post("/gift-for-someone-else-redirect", (req, res) => {
+router.post("/for-someone-else-redirect", (req, res) => {
   let forSomeoneElse = req.session.data["for-someone-else"]
 
   if (forSomeoneElse == undefined) {
@@ -27,7 +27,6 @@ router.post("/reporting-redirect", (req, res) => {
   }
 })
 
-//CDM: Route to employee-lookup.html or other-recipient-or-donor-details.html based on who the gift recipient/donor is
 router.post("/on-behalf-of-redirect", (req, res) => {
   let giftOnBehalfOf = req.session.data["on-behalf-of"]
   if (giftOnBehalfOf == "individual") {
