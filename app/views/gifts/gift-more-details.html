@@ -13,9 +13,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Gift details</h1>
-
     <form class="form" action="/gift-more-details-redirect" method="post">
+
+      <h1 class="govuk-heading-l">Gift details</h1>
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="date-received-or-offered">
@@ -27,7 +27,7 @@
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for {{ "receiving" if (data['reporting'] == "gift-received") else "offering"}} the gift
+          Reason for the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.

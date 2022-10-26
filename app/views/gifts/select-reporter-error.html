@@ -13,7 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="/reporting-redirect" method="post">
+    <form class="form" action="/select-reporter-redirect" method="post">
 
       <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
         data-module="govuk-error-summary">
@@ -23,8 +23,8 @@
         <div class="govuk-error-summary__body">
           <ul class="govuk-list govuk-error-summary__list">
             <li>
-              <a href="#reporting">
-                Select if the gift was received or offered
+              <a href="#reporter">
+                Select who {{ "received" if (data['reporting'] == "gift-received") else "offered"}} the gift
               </a>
             </li>
           </ul>
@@ -35,27 +35,33 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Was the gift received or offered?
+              Who {{ "received" if (data['reporting'] == "gift-received") else "offered"}} the gift?
             </h1>
           </legend>
-          <p id="reporting-error" class="govuk-error-message">
+          <p id="select-reporter-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span>
-            Select if the gift was received or offered
+            Select who {{ "received" if (data['reporting'] == "gift-received") else "offered"}} the gift
           </p>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reporting" name="reporting" type="radio" value="gift-received" {{
-                checked( "reporting" , "gift-received" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting">
-                Received
+              <input class="govuk-radios__input" id="reporter" name="reporter" type="radio" value="me" {{
+                checked( "reporter" , "me" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter">
+                Me
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reporting-2" name="reporting" type="radio" value="gift-offered" {{
-                checked( "reporting" , "gift-offered" ) }}>
-              <label class="govuk-label govuk-radios__label" for="reporting-2">
-                Offered
+              <input class="govuk-radios__input" id="reporter-2" name="reporter" type="radio" value="someone-else" {{
+                checked( "reporter" , "someone-else" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter-2">
+                Someone else
               </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporter-3" name="reporter" type="radio"
+                value="team-unit-department" {{ checked( "reporter" , "team-unit-department" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter-3">
+                A team, unit or department
             </div>
           </div>
         </fieldset>

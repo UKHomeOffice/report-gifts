@@ -13,9 +13,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details</h1>
-
-    <form class="form" action="/someone-else-details-redirect" method="post">
+    <form class="form" action="/team-unit-or-department-details-redirect" method="post">
 
       <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
         data-module="govuk-error-summary">
@@ -33,6 +31,12 @@
           </ul>
         </div>
       </div>
+
+      <h1 class="govuk-heading-l">{{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details</h1>
+
+      {% if (data['reporting'] == "gift-offered") %}
+      <p class="govuk-body">The donor is the team, unit or department who offered the gift.</p>
+      {% endif %}
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="team-unit-or-department-name">
@@ -138,43 +142,14 @@
             I cannot find a representative when I search
         </summary>
         <div class="govuk-details__text">
-          <p>Enter the representative's details.</p>
+          <p>Try searching using their name, employee number or email.</p>
 
-          <div class="govuk-form-group govuk-form-group--error">
-            <label class="govuk-label" for="ho-employee-name">
-              Name
-            </label>
-            <p id="ho-employee-name-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter name
-            </p>
-            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-name"
-              name="ho-employee-name" type="text" spellcheck="false" autocomplete="off"
-              value="{{ data['ho-employee-name'] }}">
-          </div>
+          <p>If you still cannot find them, then email <a
+              href="mailto: FinanceTransactionsPolicyandAssurance@homeoffice.gov.uk">FinanceTransactionsPolicyandAssurance@homeoffice.gov.uk</a>.
+          </p>
 
-          <div class="govuk-form-group govuk-form-group--error">
-            <label class="govuk-label" for="ho-employee-email">
-              Email
-            </label>
-            <p id="ho-employee-name-email-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter email
-            </p>
-            <input class="govuk-input govuk-input--width-20 govuk-input--error" id="ho-employee-email"
-              name="ho-employee-email" type="email" spellcheck="false" autocomplete="off"
-              value="{{ data['ho-employee-email'] }}">
-          </div>
-
-          <div class="govuk-form-group govuk-form-group--error">
-            <label class="govuk-label" for="ho-employee-cost-centre-code">
-              Cost centre code
-            </label>
-            <p id="ho-employee-cost-centre-code-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span>Enter cost centre code
-            </p>
-            <input class="govuk-input govuk-input--width-5 govuk-input--error" id="ho-employee-cost-centre-code"
-              name="ho-employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
-              value="{{ data['ho-employee-cost-centre-code'] }}">
-          </div>
+          <p class="govuk-body">Explain you cannot find a representative for the team, unit or department when you
+            search.</p>
 
         </div>
       </details>

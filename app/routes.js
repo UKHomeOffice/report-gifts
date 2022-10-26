@@ -4,76 +4,63 @@ const router = express.Router()
 // Add your routes here - above the module.exports line
 
 ///// NAVIGATION ROUTES START /////
-router.post("/for-someone-else-redirect", (req, res) => {
-  let forSomeoneElse = req.session.data["for-someone-else"]
-
-  if (forSomeoneElse == undefined) {
-    res.redirect("gifts/gift-for-someone-else-error")
-  } else {
-    res.redirect("gifts/reporting")
-  }
-})
-
 router.post("/reporting-redirect", (req, res) => {
   let reporting = req.session.data["reporting"]
-  let forSomeoneElse = req.session.data["for-someone-else"]
 
   if (reporting == undefined) {
     res.redirect("gifts/reporting-error")
-  } else if (reporting != undefined && forSomeoneElse == "yes") {
-    res.redirect("gifts/on-behalf-of")
-  } else if (reporting != undefined && forSomeoneElse == "no") {
-    res.redirect("gifts/decision")
+  } else {
+    res.redirect("gifts/select-reporter")
   }
 })
 
-router.post("/on-behalf-of-redirect", (req, res) => {
-  let giftOnBehalfOf = req.session.data["on-behalf-of"]
-  if (giftOnBehalfOf == "individual") {
+router.post("/select-reporter-redirect", (req, res) => {
+  let reporter = req.session.data["reporter"]
+
+  if (reporter == "me") {
+    res.redirect("gifts/decision")
+  } else if (reporter == "someone-else") {
     res.redirect("gifts/employee-lookup")
+  } else if (reporter == "team-unit-department") {
+    res.redirect("gifts/team-unit-or-department-details")
   } else {
-    res.redirect("gifts/someone-else-details")
+    res.redirect("gifts/select-reporter-error")
   }
 })
 
 router.post("/employee-lookup-redirect", (req, res) => {
   let employeeLookup = req.session.data["employee-lookup"]
-  let employeeName = req.session.data["employee-name"]
-  let employeeEmail = req.session.data["employee-email"]
-  let employeeCCC = req.session.data["employee-cost-centre-code"]
 
-  if (employeeLookup == "" && (employeeName == "" || employeeEmail == "" || employeeCCC == "")) {
+  if (employeeLookup == "") {
     res.redirect("gifts/employee-lookup-error")
   } else {
     res.redirect("gifts/decision")
   }
 })
 
-router.post("/someone-else-details-redirect", (req, res) => {
-  let teamUnitOrDepartmentName = req.session.data["team-unit-or-department-name"]
+router.post("/team-unit-or-department-details-redirect", (req, res) => {
+  let name = req.session.data["team-unit-or-department-name"]
   let homeOfficeRepresentativeLookup = req.session.data["home-office-representative-lookup"]
 
-  if (teamUnitOrDepartmentName == "" && homeOfficeRepresentativeLookup == "") {
-    res.redirect("gifts/someone-else-details-error")
+  if (name == "" && homeOfficeRepresentativeLookup == "") {
+    res.redirect("gifts/team-unit-or-department-details-error")
   } else {
     res.redirect("gifts/decision")
   }
 })
 
 router.post("/gift-more-details-redirect", (req, res) => {
-  let actionReported = req.session.data["reporting"]
+  let reporting = req.session.data["reporting"]
   let giftDate = req.session.data["date-received-or-offered"]
   let giftReason = req.session.data['reason-for-gift']
   let giftCost = req.session.data['cost-of-gift']
-  let forSomeoneElse = req.session.data["for-someone-else"]
+  let reporter = req.session.data["reporter"]
 
   if (giftDate == "" && giftReason == "" && giftCost == "") {
     res.redirect("gifts/gift-more-details-error")
-  }
-
-  if (actionReported == "gift-received" && forSomeoneElse == "no") {
+  } else if (reporting == "gift-received" && reporter == "me") {
     res.redirect("gifts/summary")
-  } else if (actionReported == "gift-received" && forSomeoneElse == "yes") {
+  } else if (reporting == "gift-received" && reporter != "me") {
     res.redirect("gifts/delegated-authority-approval")
   } else {
     res.redirect("gifts/approved-supplier")
@@ -83,18 +70,14 @@ router.post("/gift-more-details-redirect", (req, res) => {
 //CDM: Skip non-approved-supplier-used-reason.html when an approved supplier is used
 router.post("/approved-supplier-redirect", (req, res) => {
   let approvedSupplierUsed = req.session.data["approved-supplier-used"]
-  let forSomeoneElse = req.session.data["for-someone-else"]
   let approverSupplierNotUsedReason = req.session.data["approved-supplier-not-used-reason"]
+  let reporter = req.session.data["reporter"]
 
-  if (approvedSupplierUsed == "yes" && forSomeoneElse == "yes") {
-    res.redirect("gifts/delegated-authority-approval")
-  } else if (approvedSupplierUsed == "yes" && forSomeoneElse == "no") {
-    res.redirect("gifts/summary")
-  } else if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
+  if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
     res.redirect("gifts/approved-supplier-error")
-  } else if (approvedSupplierUsed == "no" && forSomeoneElse == "yes" && approverSupplierNotUsedReason != "") {
+  } else if (reporter != "me") {
     res.redirect("gifts/delegated-authority-approval")
-  } else if (approvedSupplierUsed == "no" && forSomeoneElse == "no" && approverSupplierNotUsedReason != "") {
+  } else {
     res.redirect("gifts/summary")
   }
 })

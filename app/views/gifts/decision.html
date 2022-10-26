@@ -19,7 +19,7 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              {% if (data['reporting'] == "gift-received") and (data['for-someone-else'] == "no")%}
+              {% if (data['reporting'] == "gift-received") and (data['reporter'] == "me")%}
               Did you accept or reject the gift?
               {% else %}
               Did the recipient accept or reject the gift?

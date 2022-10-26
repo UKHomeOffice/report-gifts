@@ -13,8 +13,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Gift details</h1>
-
     <form class="form" action="/gift-more-details-redirect" method="post">
 
       <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert"
@@ -29,8 +27,7 @@
                 else "offered"}}</a>
             </li>
             <li>
-              <a href="#reason-for-gift">Enter reason for {{ "receiving" if (data['reporting'] == "gift-received") else
-                "donating"}} the gift</a>
+              <a href="#reason-for-gift">Enter reason for the gift</a>
             </li>
             <li>
               <a href="#cost-of-gift">Enter cost, in pounds</a>
@@ -38,6 +35,8 @@
           </ul>
         </div>
       </div>
+
+      <h1 class="govuk-heading-l">Gift details</h1>
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="date-received-or-offered">
@@ -53,14 +52,13 @@
 
       <div class="govuk-form-group govuk-form-group--error">
         <label class="govuk-label govuk-label--m" for="reason-for-gift">
-          Reason for {{ "receiving" if (data['reporting'] == "gift-received") else "offering"}} the gift
+          Reason for the gift
         </label>
         <div id="reason-for-gift-hint" class="govuk-hint">
           For example, a diplomatic gesture.
         </div>
         <p id="reason-for-gift-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span>Enter reason for {{ "receiving" if (data['reporting'] ==
-          "gift-received") else "offering"}} the gift
+          <span class="govuk-visually-hidden">Error:</span>Enter reason for the gift
         </p>
         <input class="govuk-input govuk-input--error" id="reason-for-gift" name="reason-for-gift"
           value="{{ data['reason-for-gift'] }}" type="text" autocomplete="off">

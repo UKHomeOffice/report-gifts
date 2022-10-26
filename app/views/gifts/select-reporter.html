@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/select-reporter-redirect" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Who {{ "received" if (data['reporting'] == "gift-received") else "offered"}} the gift?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporter" name="reporter" type="radio" value="me" {{
+                checked( "reporter" , "me" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter">
+                Me
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporter-2" name="reporter" type="radio" value="someone-else" {{
+                checked( "reporter" , "someone-else" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter-2">
+                Someone else
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reporter-3" name="reporter" type="radio"
+                value="team-unit-department" {{ checked( "reporter" , "team-unit-department" ) }}>
+              <label class="govuk-label govuk-radios__label" for="reporter-3">
+                A team, unit or department
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

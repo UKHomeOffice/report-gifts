@@ -16,12 +16,17 @@
     <form class="form" action="/employee-lookup-redirect" method="post">
 
       <div class="govuk-form-group lookup">
-        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="employee-lookup">
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="employee-lookup">
             {{ "Recipient" if (data['reporting'] == "gift-received") else "Donor"}} details
           </label>
         </h1>
         <div id="employee-lookup-hint" class="govuk-hint">
+          {% if (data['reporting'] == "gift-offered") %}
+          The donor is the person who offered the gift. Search for their name, employee number or email.
+          {% else %}
           Search for their name, employee number or email.
+          {% endif %}
         </div>
         <input class="govuk-input govuk-input--width-20" id="employee-lookup" name="employee-lookup" type="search"
           autocomplete="off" value="{{ data['employee-lookup'] }}">
@@ -102,32 +107,16 @@
             I cannot find the {{ "recipient" if (data['reporting'] == "gift-received") else "donor"}} when I search
         </summary>
         <div class="govuk-details__text">
-          <p>Enter the gift {{ "recipient's" if (data['reporting'] == "gift-received") else "donor's"}} details.</p>
+          <p>Try searching using their name, employee number or email.</p>
 
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="employee-name">
-              Name
-            </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-name" name="employee-name" type="text"
-              spellcheck="false" autocomplete="off" value="{{ data['employee-name'] }}">
-          </div>
+          <p>If you still cannot find them, then email <a
+              href="mailto: FinanceTransactionsPolicyandAssurance@homeoffice.gov.uk">FinanceTransactionsPolicyandAssurance@homeoffice.gov.uk</a>.
+          </p>
 
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="employee-email">
-              Email
-            </label>
-            <input class="govuk-input govuk-input--width-20" id="employee-email" name="employee-email" type="email"
-              spellcheck="false" autocomplete="off" value="{{ data['employee-email'] }}">
-          </div>
+          <p class="govuk-body">Explain you cannot find the gift {{ "recipient" if (data['reporting'] ==
+            "gift-received")
+            else "donor"}} when you search.</p>
 
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="employee-cost-centre-code">
-              Cost centre code
-            </label>
-            <input class="govuk-input govuk-input--width-5" id="employee-cost-centre-code"
-              name="employee-cost-centre-code" type="text" spellcheck="false" autocomplete="off"
-              value="{{ data['employee-cost-centre-code'] }}">
-          </div>
         </div>
       </details>
 
