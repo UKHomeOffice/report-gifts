@@ -50,39 +50,31 @@ router.post("/team-unit-or-department-details-redirect", (req, res) => {
 })
 
 router.post("/gift-more-details-redirect", (req, res) => {
-  let reporting = req.session.data["reporting"]
   let giftDate = req.session.data["date-received-or-offered"]
   let giftReason = req.session.data['reason-for-gift']
   let giftCost = req.session.data['cost-of-gift']
-  let reporter = req.session.data["reporter"]
+  let reporting = req.session.data["reporting"]
 
   if (giftDate == "" && giftReason == "" && giftCost == "") {
     res.redirect("gifts/gift-more-details-error")
-  } else if (reporting == "gift-received" && reporter == "me") {
-    res.redirect("gifts/summary")
-  } else if (reporting == "gift-received" && reporter != "me") {
+  } else if (reporting == "gift-received") {
     res.redirect("gifts/delegated-authority-approval")
   } else {
     res.redirect("gifts/approved-supplier")
   }
 })
 
-//CDM: Skip non-approved-supplier-used-reason.html when an approved supplier is used
 router.post("/approved-supplier-redirect", (req, res) => {
   let approvedSupplierUsed = req.session.data["approved-supplier-used"]
   let approverSupplierNotUsedReason = req.session.data["approved-supplier-not-used-reason"]
-  let reporter = req.session.data["reporter"]
 
   if (approvedSupplierUsed == "no" && approverSupplierNotUsedReason == "") {
     res.redirect("gifts/approved-supplier-error")
-  } else if (reporter != "me") {
-    res.redirect("gifts/delegated-authority-approval")
   } else {
-    res.redirect("gifts/summary")
+    res.redirect("gifts/delegated-authority-approval")
   }
 })
 
-//CDM: Route to approver-lookup.html or delegated-authority-disapproval-reason.html based on approval value
 router.post("/delegated-authority-approval-redirect", (req, res) => {
   let delegatedAuthorityApproval = req.session.data["delegated-authority-approval"]
   if (delegatedAuthorityApproval == "yes") {
