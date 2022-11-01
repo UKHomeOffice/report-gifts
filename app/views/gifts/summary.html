@@ -35,20 +35,20 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Decision
+            Accepted or rejected
           </dt>
           <dd class="govuk-summary-list__value">
             {% if (data['reporting'] == "gift-received") %}
             {% if (data['gift-decision'] == "accept") %}
-            Gift accepted
+            Accepted
             {% else %}
-            Gift rejected
+            Rejected
             {% endif %}
             {% else %}
             {% if (data['gift-decision'] == "accept") %}
-            Gift accepted by the recipient
+            Accepted by the recipient
             {% else %}
-            Gift rejected by the recipient
+            Rejected by the recipient
             {% endif %}
             {% endif %}
           </dd>
@@ -284,27 +284,9 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Date {{ "received" if (data['received-or-offered'] == "received") else "offered" }}
+            Date {{ "received" if (data['received-or-offered'] == "gift-received") else "offered" }}
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if(data['date-received-or-offered'] == "2022-10-25") %}
-            25 October 2022
-            {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-10-26") %}
-            26 October 2022
-            {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-10-27") %}
-            27 October 2022
-            {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-10-28") %}
-            28 October 2022
-            {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-10-29") %}
-            29 October 2022
-            {% endif %}
-            {% if(data['date-received-or-offered'] == "2022-10-30") %}
-            30 October 2022
-            {% endif %}
             {% if(data['date-received-or-offered'] == "2022-10-31") %}
             31 October 2022
             {% endif %}
@@ -319,6 +301,36 @@
             {% endif %}
             {% if(data['date-received-or-offered'] == "2022-11-04") %}
             04 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-05") %}
+            05 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-06") %}
+            06 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-07") %}
+            07 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-08") %}
+            08 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-09") %}
+            09 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-10") %}
+            10 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-11") %}
+            11 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-12") %}
+            12 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-13") %}
+            13 November 2022
+            {% endif %}
+            {% if(data['date-received-or-offered'] == "2022-11-14") %}
+            14 November 2022
             {% endif %}
           </dd>
         </div>
@@ -365,7 +377,6 @@
         {% endif %}
       </dl>
 
-
       <h2 class="govuk-heading-m">Delegated authority approval</h2>
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
@@ -380,7 +391,7 @@
         {% if (data['delegated-authority-approval'] == "no") %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Reasons why approval not obtained
+            Reason why approval not obtained
           </dt>
           <dd class="govuk-summary-list__value">
             {{ data['delegated-authority-disapproval-reason'] }}
