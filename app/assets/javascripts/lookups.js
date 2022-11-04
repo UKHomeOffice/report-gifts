@@ -8,7 +8,7 @@ $("#employee-lookup-search-button").on("click", function () {
 $("#employee-lookup-results").on("click", function () {
   $("#employee-lookup-results").addClass("js-hidden")
   $("#employee-lookup-selection").removeClass("js-hidden")
-  $("#employee-lookup").val("Daniel Blair, EO, CX Specialist")
+  $("#employee-lookup").val("Daniel Blair, Executive Officer, CX Specialist")
 })
 
 $("#employee-lookup-clear-selection").on("click", function () {
@@ -24,7 +24,7 @@ $("#home-office-representative-lookup-search-button").on("click", function () {
 $("#home-office-representative-lookup-results").on("click", function () {
   $("#home-office-representative-lookup-results").addClass("js-hidden")
   $("#home-office-representative-lookup-selection").removeClass("js-hidden")
-  $("#home-office-representative-lookup").val("Max Thompson, SEO, CX Lead")
+  $("#home-office-representative-lookup").val("Max Thompson, Senior Executive Officer, CX Lead")
 })
 
 $("#home-office-representative-lookup-clear-selection").on("click", function () {
