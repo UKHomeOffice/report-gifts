@@ -49,11 +49,20 @@ router.post("/team-unit-or-department-details-redirect", (req, res) => {
   }
 })
 
+function getFormattedDate(unformattedDate) {
+  let date = new Date(unformattedDate)
+  let monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+  return date.getDate() + " " + monthName[date.getMonth()] + " " + date.getFullYear()
+}
+
 router.post("/gift-more-details-redirect", (req, res) => {
   let giftDate = req.session.data["date-received-or-offered"]
   let giftReason = req.session.data['reason-for-gift']
   let giftCost = req.session.data['cost-of-gift']
   let reporting = req.session.data["reporting"]
+
+  if (giftDate != "") req.session.data["formatted-date-received-or-offered"] = getFormattedDate(giftDate)
 
   if (giftDate == "" && giftReason == "" && giftCost == "") {
     res.redirect("gifts/gift-more-details-error")
